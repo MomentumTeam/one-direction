@@ -1,0 +1,36 @@
+.progress {
+  border: solid 1px #cfea11;
+  background: white;
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  margin: auto 10px;
+  display: flex;
+  height: 10px;
+  min-width: 15%;
+  width: 15%;
+}
+
+.progressValue {
+  animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  background: #cfea11;
+  height: 90%;
+  border-radius: 100px;
+  width: 0;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .progress {
+    display: none;
+  }
+}
