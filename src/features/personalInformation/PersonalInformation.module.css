@@ -1,0 +1,24 @@
+.questions {
+  background-color: lightgray;
+  border-radius: 25px;
+  padding: 3% 4% 1% 4%;
+}
+
+.question {
+  background-color: whitesmoke;
+  font-size: medium;
+  height: 65%;
+  border-radius: 25px;
+  padding: 1% 4% 1% 4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionIcon {
+  width: 30px;
+}
+
+.submit {
+  margin-top: 15px;
+  direction: ltr;
+}
