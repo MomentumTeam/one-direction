@@ -7,6 +7,7 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Tabs } from "./components/tabs/Tabs";
 import { Haeder } from "./components/haeder/Haeder";
+
 function App() {
   return (
     <ConfigProvider direction="rtl">
