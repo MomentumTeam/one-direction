@@ -7,6 +7,7 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Tabs } from "./components/tabs/Tabs";
 import { Haeder } from "./components/haeder/Haeder";
+import SideNavBar from "./components/SideNavBar";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
             <div className="haeder">
               <Haeder />
             </div>
-            <div className="aside"></div>
+            <div className="aside">
+              <SideNavBar />
+            </div>
             <div className="logo">
               <img className="logo-img" src="./logo.png"></img>
             </div>

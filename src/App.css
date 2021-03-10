@@ -15,7 +15,7 @@
 }
 .content {
   grid-area: content;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 .haeder {
   width: 100%;
@@ -49,4 +49,18 @@
   /* align-items: center; */
   height: 100%;
   padding: 1% 3% 3% 3%;
+}
+
+.userAvatar {
+  /* padding:2%; */
+  border: 2px solid #f2f2f2;
+  /* width: 5%; */
+}
+
+.sideNavBarButtonsDiv {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  position: absolute;
+  bottom: 5%;
 }

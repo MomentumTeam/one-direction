@@ -67,4 +67,4 @@ function SharingFolders() {
     )
 }
 
-export default SharingFolders
+export default SharingFolders;
