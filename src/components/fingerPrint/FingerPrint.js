@@ -27,6 +27,7 @@ export const FingerPrint = () => {
           </Col>
           <Col span={12} />
         </Row>
+        <br />
         לנוחותך, להלן רשימת המקומות ושעות הפעילות בהם ניתן לדגום אצבע:
         <Row gutter={[24, 16]} className={styles.tailRow}>
           <Col span={6} className={styles.tile} style={{ textAlign: "center" }}>
@@ -69,13 +70,16 @@ export const FingerPrint = () => {
             />
           </Col>
         </Row>
-        <Row justify="end" align="bottom" className={styles.confirm}>
-          <Col>
-            <Button shape="round" size="large">
-              סיימתי הרכשת אצבע
-              <ArrowLeftOutlined />
-            </Button>
-          </Col>
+        <br />
+        <Row justify="end" align="bottom" className={styles.tailRow}>
+          <div>
+            <Col>
+              <Button shape="round" size="large">
+                סיימתי הרכשת אצבע
+                <ArrowLeftOutlined />
+              </Button>
+            </Col>
+          </div>
         </Row>
       </div>
     </Content>
