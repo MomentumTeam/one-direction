@@ -49,8 +49,8 @@ export const FingerPrint = () => {
             <OperationTime
               title="טלפון:"
               icon="/img/Call.png"
-              firstLine="א-ה 12:35 - 08:00"
-              secondLine="יום ו 15:00 - 16:00"
+              firstLine="03-5289745"
+              secondLine="054-5864771"
             />
           </Col>
           <Col span={6} className={styles.tile}>
@@ -65,8 +65,8 @@ export const FingerPrint = () => {
             <OperationTime
               title="טלפון:"
               icon="/img/Call.png"
-              firstLine="א-ה 12:35 - 08:00"
-              secondLine="יום ו 15:00 - 16:00"
+              firstLine="03-5289745"
+              secondLine="054-5864771"
             />
           </Col>
         </Row>
