@@ -34,7 +34,7 @@ function App() {
 
               <img
                 className="inner-image"
-                src={process.env.PUBLIC_URL + "/img/oneAmenLogo.png"}
+                src={process.env.PUBLIC_URL + "/img/logo.png"}
               ></img>
             </div>
           </div>
