@@ -11,7 +11,7 @@ const tabs = [
   },
   {
     id: 3,
-    path: "/network",
+    path: "/systems",
   },
   {
     id: 2,

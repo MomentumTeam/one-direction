@@ -11,8 +11,14 @@ import { Form, Input, Button, Space } from "antd";
 const { Title, Paragraph, Text } = Typography;
 
 function SharingFolders() {
+  const [form] = Form.useForm();
+
   const onFinish = (values) => {
     console.log("Received values of form:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -25,8 +31,10 @@ function SharingFolders() {
       </Paragraph>
 
       <Form
-        name="dynamic_form_nest_item"
+        name="SharingFolders"
         onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        form={form}
         autoComplete="off"
         layout="vertical"
         className={styles.marginTop}
@@ -38,6 +46,7 @@ function SharingFolders() {
             value="C:\Users\Liora Yacob"
           />
         </Form.Item>
+
         <Form.Item label="ניתוב תיקייה 2">
           <Input
             className={styles.input}
@@ -46,21 +55,17 @@ function SharingFolders() {
           />
         </Form.Item>
 
-        <Form.List name="users">
+        <Form.List name="additionalSharingFolders">
           {(fields, { add, remove }) => (
             <>
               {fields.map((field) => (
-                <Space
-                  key={field.key}
-                  style={{ display: "flex", marginBottom: 8 }}
-                  align="baseline"
-                >
+                <Space key={field.key} align="baseline">
                   <Form.Item
                     {...field}
                     label={["ניתוב תיקייה ", fields.indexOf(field) + 3]}
-                    name={[field.name, "first"]}
-                    fieldKey={[field.fieldKey, "first"]}
-                    rules={[{ required: true, message: "Missing first name" }]}
+                    name={[field.key, `folderPath`]}
+                    fieldKey={[field.fieldKey, "folderPath"]}
+                    rules={[{ required: true, message: "Missing Value" }]}
                   >
                     <Input className={styles.input} />
                   </Form.Item>

@@ -11,7 +11,7 @@ module.exports = override(
     modifyVars: {
       "@primary-color": "#001322",
       "@border-radius-base": "25px",
-      "@disabled-bg": "#d6d6d6",
+      "@disabled-bg": "#E3E3E3",
       "@disabled-color": "#000000",
       "@border-width-base": "2px",
       "@btn-border-width": "0px",
@@ -25,6 +25,9 @@ module.exports = override(
       "@btn-default-border": "@border-color-base",
 
       "@select-item-selected-color": "#fff",
+      // "@btn-primary-color": "#000000",
+      "@rate-star-color": "#CFEA11",
+      "@rate-star-bg": "#FFFFFF",
     },
   })
 );

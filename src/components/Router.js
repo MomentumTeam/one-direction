@@ -3,6 +3,7 @@ import { PersonalInformationForm } from "../features/personalInformation/Persona
 import SharingFolders from "../features/sharingFolders/SharingFolders";
 import { FingerPrint } from "./fingerPrint/FingerPrint";
 import { EndProcess } from "./endProcess/EndProcess";
+import Systems from "../features/systems/Systems";
 
 export const AppRouter = () => {
   return (
@@ -10,7 +11,7 @@ export const AppRouter = () => {
       <Switch>
         <Route exact path="/" render={() => <PersonalInformationForm />} />
         <Route exact path="/folders" render={() => <SharingFolders />} />
-        <Route exact path="/network" render={() => <div>Network</div>} />
+        <Route exact path="/systems" render={() => <Systems />} />
         <Route exact path="/fingerPrint" render={() => <FingerPrint />} />
         <Route exact path="/finish" render={() => <EndProcess />} />
         <Redirect to="/" />

@@ -6,8 +6,8 @@ import { ArrowLeftOutlined, UploadOutlined } from "@ant-design/icons";
 import { Avatar, Image, Upload } from "antd";
 import styles from "./PersonalInformation.module.css";
 import { EditAvatar } from "./EditAvatar";
-import { useState } from "react";
 import Title from "antd/lib/typography/Title";
+
 export const PersonalInformationForm = () => {
   const [form] = Form.useForm();
 
@@ -23,6 +23,7 @@ export const PersonalInformationForm = () => {
           layout="vertical"
           form={form}
           onFinish={onFinish}
+          name="PersonalInformationForm"
         >
           <Row justify="space-between">
             <Col>
