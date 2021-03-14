@@ -25,7 +25,20 @@ function App() {
               <SideNavBar />
             </div>
             <div className="logo">
-              <img className="logo-img" src="./logo.png"></img>
+              <div className="app-name">
+                <p className="first-word">
+                  my<strong className="second-word">one</strong>
+                </p>
+              </div>
+              <img
+                className="logo-img"
+                src={process.env.PUBLIC_URL + "/img/among_us_hd.png"}
+              ></img>
+
+              <img
+                className="inner-image"
+                src={process.env.PUBLIC_URL + "/img/logo.png"}
+              ></img>
             </div>
           </div>
         </Router>

@@ -6,7 +6,7 @@ import { ArrowLeftOutlined, UploadOutlined } from "@ant-design/icons";
 import { Avatar, Image, Upload } from "antd";
 import styles from "./PersonalInformation.module.css";
 import { EditAvatar } from "./EditAvatar";
-import { useState } from "react";
+import Title from "antd/lib/typography/Title";
 
 export const PersonalInformationForm = () => {
   const [form] = Form.useForm();
@@ -25,11 +25,16 @@ export const PersonalInformationForm = () => {
           onFinish={onFinish}
           name="PersonalInformationForm"
         >
-          <EditAvatar />
+          <Row justify="space-between">
+            <Col>
+              <Title level={2}>הפרטים האישיים שלי</Title>
+            </Col>
+            <EditAvatar />
+          </Row>
           <EditUserDetails />
           <SecurityQuestions />
           <Form.Item className={styles.submit}>
-            <Button htmlType="submit" type="primary" shape="round" size="large">
+            <Button htmlType="submit" shape="round" size="large">
               אישור פרטים אישיים
               <ArrowLeftOutlined />
             </Button>
