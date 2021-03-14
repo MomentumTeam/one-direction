@@ -11,9 +11,11 @@ module.exports = override(
     modifyVars: {
       "@primary-color": "#CFEA11",
       "@border-radius-base": "25px",
-      "@disabled-bg": "#d6d6d6",
+      "@disabled-bg": "#E3E3E3",
       "@disabled-color": "#000000",
       "@btn-primary-color": "#000000",
+      "@rate-star-color": "@primary-color",
+      "@rate-star-bg": '#FFFFFF',
     },
   })
 );

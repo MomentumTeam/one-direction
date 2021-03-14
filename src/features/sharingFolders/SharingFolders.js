@@ -7,8 +7,14 @@ import { Form, Input, Button, Space } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 
 function SharingFolders() {
+    const [form] = Form.useForm();
+
     const onFinish = values => {
         console.log('Received values of form:', values);
+    };
+
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
     };
 
     return (
@@ -16,31 +22,32 @@ function SharingFolders() {
             <Title level={2}>תיקיות שיתוף</Title>
             <Paragraph className={styles.marginTop} strong={true} >
                 מנועי האוטומציה שלנו זיהו את תיקיות השיתוף הרלוונטיות עבורך
-                <br/>
+                <br />
                 ניתן להוסיף תיקיות נוספות (העתק-הדבק לנתיב)
             </Paragraph>
 
 
-            <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off" layout="vertical" className={styles.marginTop}>
-                <Form.Item label="ניתוב תיקייה 1"  >
+            <Form name="SharingFolders" onFinish={onFinish} onFinishFailed={onFinishFailed} form={form} autoComplete="off" layout="vertical" className={styles.marginTop}>
+                
+                <Form.Item label="ניתוב תיקייה 1" >
                     <Input className={styles.input} disabled value="C:\Users\Liora Yacob" />
                 </Form.Item>
-                <Form.Item label="ניתוב תיקייה 2">
+
+                <Form.Item label="ניתוב תיקייה 2" >
                     <Input className={styles.input} disabled value="C:\Users\Liora Yacob\my-one" />
                 </Form.Item>
 
-                <Form.List name="users">
+                <Form.List name="additionalSharingFolders">
                     {(fields, { add, remove }) => (
                         <>
                             {fields.map(field => (
-                                <Space key={field.key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                                <Space key={field.key} align="baseline">
                                     <Form.Item
                                         {...field}
                                         label={["ניתוב תיקייה ", fields.indexOf(field) + 3]}
-
-                                        name={[field.name, 'first']}
-                                        fieldKey={[field.fieldKey, 'first']}
-                                        rules={[{ required: true, message: 'Missing first name' }]}
+                                        name={[field.key, `folderPath`]}
+                                        fieldKey={[field.fieldKey, 'folderPath']}
+                                        rules={[{ required: true, message: 'Missing Value' }]}
                                     >
                                         <Input className={styles.input} />
                                     </Form.Item>
@@ -58,7 +65,7 @@ function SharingFolders() {
                 <Form.Item className={styles.submit}>
                     <Button htmlType="submit" type="primary" shape="round" size="large">
                         אישור תיקיות שיתוף
-                            <ArrowLeftOutlined />
+                        <ArrowLeftOutlined />
                     </Button>
                 </Form.Item>
             </Form>
@@ -67,4 +74,4 @@ function SharingFolders() {
     )
 }
 
-export default SharingFolders
+export default SharingFolders;
