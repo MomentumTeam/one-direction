@@ -28,6 +28,9 @@ module.exports = override(
       // "@btn-primary-color": "#000000",
       "@rate-star-color": "#CFEA11",
       "@rate-star-bg": "#FFFFFF",
+
+      "@progress-default-color": "#CFEA11",
+      "@progress-info-text-color": "#FFFFFF",
     },
   })
 );

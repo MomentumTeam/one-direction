@@ -135,3 +135,18 @@
   position: absolute;
   bottom: 5%;
 }
+
+.ant-progress-bg {
+  height: 0.9em !important;
+}
+
+.ant-progress-outer {
+  margin-right: calc(-2em - 8px) !important;
+  margin-left: 0 !important;
+  padding-right: calc(2em + 15px) !important;
+  padding-left: 0 !important;
+}
+
+.ant-progress-inner {
+  border: #cfea11 2px solid;
+}
