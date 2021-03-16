@@ -26,7 +26,7 @@ function SideNavBar() {
               </p>
             }
           >
-            <Button shape="circle" onClick={() => window.alert("faqButton")}>
+            <Button shape="circle"  href="/faq" >
               <img src={process.env.PUBLIC_URL + "/img/ask.png"} alt="FAQ" />
             </Button>
           </Tooltip>
