@@ -3,10 +3,18 @@ import "../App.css";
 import { Content } from "../components/Content";
 const { Text } = Typography;
 
+const style = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  alignItems: "center",
+  height: "100%",
+  padding: "1% 3% 3% 3%",
+};
 function SideNavBar() {
   return (
-    <div style={{ marginTop: "30%" }}>
-      <Content>
+    <div style={{ marginTop: "30%", height: "100%" }}>
+      <div style={style}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Avatar
             style={{ border: "2px solid #F2F2F2" }}
@@ -38,7 +46,7 @@ function SideNavBar() {
             />
           </Button>
         </div>
-      </Content>
+      </div>
     </div>
   );
 }
