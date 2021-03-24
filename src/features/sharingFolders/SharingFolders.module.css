@@ -1,0 +1,26 @@
+.marginTop {
+  margin-top: 3%;
+}
+
+.fatherDiv {
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+.input {
+  width: 777px;
+  height: 40px;
+  /* border: 2px solid black; */
+}
+
+.addButton {
+  /* border: 2px solid black; */
+  padding: 10%;
+}
+
+.submit {
+  padding-bottom: 15px;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}

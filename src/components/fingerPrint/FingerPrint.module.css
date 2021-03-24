@@ -1,0 +1,47 @@
+.tile {
+  background-color: lightgray;
+  border-radius: 25px;
+  padding: 2% 4% 1% 4%;
+  margin: 1%;
+  height: auto;
+}
+
+.itemContainer {
+  display: flex;
+}
+
+.itemContainer .itemIcon {
+  padding: 10px;
+  width: 50px;
+}
+
+.itemContainer .itemSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemContainer .itemSection .itemFirstLine {
+  padding: 0px;
+  flex-grow: 1;
+}
+
+.itemContainer .itemSection .itemSecondLine {
+  padding: 0px;
+  flex-grow: 1;
+}
+
+.mark {
+  background-color: #cfea11;
+  width: 60%;
+  text-align: center;
+  font-weight: 100 !important;
+  margin: auto;
+}
+
+.confirm {
+  height: 40%;
+}
+
+.tailRow {
+  height: 40%;
+}

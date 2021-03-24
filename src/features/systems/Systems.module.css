@@ -1,0 +1,46 @@
+.fatherDiv {
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+.submit {
+  padding-bottom: 15px;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}
+
+.input {
+  width: 777px;
+  height: 40px;
+  border: 2px solid black;
+}
+
+/* .submit {
+  margin-top: 15px;
+  direction: ltr;
+} */
+
+.addButton {
+  border: 2px solid black;
+  /* padding: 10%; */
+}
+
+.verticallyCentered {
+  position: relative;
+  top: 35%;
+  transform: translateY(-30%);
+}
+
+.rate {
+  background-color: "";
+  font-size: "250%";
+  stroke: "#001322";
+  stroke-width: "25";
+  stroke-linecap: "butt";
+  stroke-dasharray: "0";
+  position: relative;
+  top: 45%;
+  transform: translateY(-50%);
+}
+

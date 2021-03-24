@@ -20,5 +20,18 @@
 
 .submit {
   margin-top: 15px;
-  direction: ltr;
+  float: left;
 }
+
+.avatarImg {
+  width: 100%;
+  background-color: #001322;
+  padding: 10px;
+}
+
+/* .uploadButton {
+  background-color: black;
+  color: white;
+  direction: ltr;
+  margin-top: 20px;
+} */

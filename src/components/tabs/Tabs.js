@@ -1,6 +1,10 @@
-import { Tab } from "../Tab";
+import { Tab } from "./Tab";
 import { useLocation } from "react-router-dom";
 const tabs = [
+  {
+    id: 6,
+    path: "/faq",
+  },
   {
     id: 5,
     path: "/finish",
@@ -11,7 +15,7 @@ const tabs = [
   },
   {
     id: 3,
-    path: "/network",
+    path: "/systems",
   },
   {
     id: 2,
@@ -26,17 +30,10 @@ export const Tabs = () => {
   let location = useLocation();
   let currTab = tabs.find((tab) => tab.path === location.pathname);
 
-  const getIcon = (tab) => {
-    if (tab === currTab) {
-      return `/img/${tab.id}S.png`;
-    }
-    return `/img/${tab.id}${tab.id < currTab.id ? "D" : ""}.png`;
-  };
-
   return (
     <div style={{ display: "flex" }}>
       {tabs.map((tab) => (
-        <Tab key={tab.id} tab={tab} getIcon={getIcon} />
+        <Tab key={tab.id} tab={tab} currTab={currTab} />
       ))}
     </div>
   );

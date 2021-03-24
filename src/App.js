@@ -7,6 +7,8 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Tabs } from "./components/tabs/Tabs";
 import { Haeder } from "./components/haeder/Haeder";
+import SideNavBar from "./components/SideNavBar";
+
 function App() {
   return (
     <ConfigProvider direction="rtl">
@@ -19,9 +21,24 @@ function App() {
             <div className="haeder">
               <Haeder />
             </div>
-            <div className="aside"></div>
+            <div className="aside">
+              <SideNavBar />
+            </div>
             <div className="logo">
-              <img className="logo-img" src="./logo.png"></img>
+              <div className="app-name">
+                <p className="first-word">
+                  my<strong className="second-word">one</strong>
+                </p>
+              </div>
+              <img
+                className="logo-img"
+                src={process.env.PUBLIC_URL + "/img/among_us_hd.png"}
+              ></img>
+
+              <img
+                className="inner-image"
+                src={process.env.PUBLIC_URL + "/img/logo.png"}
+              ></img>
             </div>
           </div>
         </Router>
