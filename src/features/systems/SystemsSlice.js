@@ -2,15 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    systems: [
+    systems: [  
         {
             systemName: "Chrome",
-            logo: "/img/systems/crome.png"
         },
         {
             systemName: "Office",
-            logo: "/img/systems/office.png"
         },
+    ],
+    addedSystems: [
+
     ]
 };
 
@@ -20,7 +21,11 @@ export const SystemsSlice = createSlice({
     initialState,
     reducers: {
         Add: (state, action) => {
-            state.systems = [...state.systems, action.payload ];
+            state.systems = [...state.systems, action.payload];
+
+        },
+        AddToExistingList: (state, action) => {
+            state.addedSystems = [...state.addedSystems, action.payload];
 
         },
 
@@ -29,7 +34,8 @@ export const SystemsSlice = createSlice({
 
 
 export const selectSystems = (state) => state.systems.systems;
+export const selectAddedSystems = (state) => state.systems.addedSystems;
 
 
-export const { Add } = SystemsSlice.actions;
+export const { Add, AddToExistingList} = SystemsSlice.actions;
 export default SystemsSlice.reducer;

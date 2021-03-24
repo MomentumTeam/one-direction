@@ -23,7 +23,7 @@ function SystemsList({systems}) {
                             <List.Item.Meta
                                 avatar={
                                     <Image
-                                        src={process.env.PUBLIC_URL + item.logo}
+                                        src={process.env.PUBLIC_URL + "/img/systems/" + item.systemName.split(" ").join("") + ".png"}
                                         preview={false}
                                         fallback={
                                             process.env.PUBLIC_URL +

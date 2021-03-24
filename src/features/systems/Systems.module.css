@@ -28,8 +28,8 @@
 
 .verticallyCentered {
   position: relative;
-  top: 45%;
-  transform: translateY(-50%);
+  top: 35%;
+  transform: translateY(-30%);
 }
 
 .rate {
