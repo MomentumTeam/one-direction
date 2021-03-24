@@ -1,17 +1,19 @@
 import { Typography } from "antd";
 import styles from "./SharingFolders.module.css";
-import { Content } from "../../components/Content";
 import {
   ArrowLeftOutlined,
   PlusOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
 import { Form, Input, Button, Space } from "antd";
+import { selectFolders } from "./SharingFoldersSlice";
+import { useSelector } from "react-redux";
 
 const { Title, Paragraph, Text } = Typography;
 
 function SharingFolders() {
   const [form] = Form.useForm();
+  const folders = useSelector(selectFolders);
 
   const onFinish = (values) => {
     console.log("Received values of form:", values);
@@ -39,21 +41,16 @@ function SharingFolders() {
         layout="vertical"
         className={styles.marginTop}
       >
-        <Form.Item label="ניתוב תיקייה 1">
-          <Input
-            className={styles.input}
-            disabled
-            value="C:\Users\Liora Yacob"
-          />
-        </Form.Item>
 
-        <Form.Item label="ניתוב תיקייה 2">
-          <Input
-            className={styles.input}
-            disabled
-            value="C:\Users\Liora Yacob\my-one"
-          />
-        </Form.Item>
+        {folders.map((folder) => (
+          <Form.Item label={["ניתוב תיקייה ", folders.indexOf(folder) + 1]}>
+            <Input
+              className={styles.input}
+              disabled
+              value={folder}
+            />
+          </Form.Item>
+        ))}
 
         <Form.List name="additionalSharingFolders">
           {(fields, { add, remove }) => (
@@ -62,14 +59,19 @@ function SharingFolders() {
                 <Space key={field.key} align="baseline">
                   <Form.Item
                     {...field}
-                    label={["ניתוב תיקייה ", fields.indexOf(field) + 3]}
-                    name={[field.key, `folderPath`]}
+                    label={["ניתוב תיקייה ", fields.indexOf(field) + folders.length + 1]}
+                    name={[field.name, `folderPath`]}
                     fieldKey={[field.fieldKey, "folderPath"]}
                     rules={[{ required: true, message: "Missing Value" }]}
                   >
                     <Input className={styles.input} />
                   </Form.Item>
-                  <MinusCircleOutlined onClick={() => remove(field.name)} />
+                  <MinusCircleOutlined onClick={() => {
+                    console.log("field to remove: ")
+                    console.log(field)
+
+                    remove(field.name)
+                  }} />
                 </Space>
               ))}
               <Form.Item>

@@ -134,3 +134,7 @@
   position: absolute;
   bottom: 5%;
 }
+
+.ant-col-rtl{
+  text-align: right !important;
+}
