@@ -165,6 +165,7 @@
   .logo {
     display: none;
   }
-.ant-col-rtl{
+}
+.ant-col-rtl {
   text-align: right !important;
 }

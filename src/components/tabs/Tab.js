@@ -9,7 +9,7 @@ export const Tab = ({ tab, currTab }) => {
   };
 
   const isDone = tab.id <= currTab.id ? true : false;
-
+  console.log(process.env);
   return (
     <div>
       <NavLink
