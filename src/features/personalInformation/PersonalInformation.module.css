@@ -20,7 +20,7 @@
 
 .submit {
   margin-top: 15px;
-  direction: ltr;
+  float: left;
 }
 
 .avatarImg {

@@ -165,4 +165,6 @@
   .logo {
     display: none;
   }
+.ant-col-rtl{
+  text-align: right !important;
 }

@@ -28,6 +28,19 @@
 
 .verticallyCentered {
   position: relative;
-  top: 50%;
+  top: 35%;
+  transform: translateY(-30%);
+}
+
+.rate {
+  background-color: "";
+  font-size: "250%";
+  stroke: "#001322";
+  stroke-width: "25";
+  stroke-linecap: "butt";
+  stroke-dasharray: "0";
+  position: relative;
+  top: 45%;
   transform: translateY(-50%);
 }
+

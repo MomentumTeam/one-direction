@@ -26,11 +26,17 @@ module.exports = override(
 
       "@select-item-selected-color": "#fff",
       // "@btn-primary-color": "#000000",
+
+      //Rate
       "@rate-star-color": "#CFEA11",
       "@rate-star-bg": "#FFFFFF",
 
       "@progress-default-color": "#CFEA11",
       "@progress-info-text-color": "#FFFFFF",
+      //Faq
+      "@collapse-content-bg": "#e3e3e3",
+      "@collapse-header-bg": "#f2f2f2",
+      "@collapse-panel-border-radius": "none",
     },
   })
 );
