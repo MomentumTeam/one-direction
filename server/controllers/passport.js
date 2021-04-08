@@ -5,10 +5,13 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 
 const config = {
   callbackURL: `${process.env.SERVER_URL || "http://localhost:4000"}/api/success`,
-  shragaURL: process.env.SHRAGA_URL || "http://13.79.7.3",
+  shragaURL: process.env.SHRAGA_URL || "https://shraga-prod.northeurope.cloudapp.azure.com",
   useADFS: true,
   useEnrichId: true,
 };
