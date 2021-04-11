@@ -8,12 +8,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Tabs } from "./components/tabs/Tabs";
 import { Haeder } from "./components/haeder/Haeder";
 import SideNavBar from "./components/SideNavBar";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
     <ConfigProvider direction="rtl">
       <div className="App">
-        <Router>
+        <HomePage />
+
+
+        {/* <Router>
           <div className="grid-container">
             <div className="content">
               <AppRouter />
@@ -41,7 +45,7 @@ function App() {
               ></img>
             </div>
           </div>
-        </Router>
+        </Router> */}
       </div>
     </ConfigProvider>
   );
