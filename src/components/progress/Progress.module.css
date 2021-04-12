@@ -1,4 +1,19 @@
 .progress {
+  width: 25%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* height:; */
+}
+
+.bigProgress {
+  /* height: 100px; */
+  direction: ltr;
+  margin: 7%;
+  font-weight: bold;
+}
+
+/* .progress {
   border: solid 1px #cfea11;
   background: white;
   justify-content: flex-start;
@@ -10,9 +25,9 @@
   height: 10px;
   min-width: 15%;
   width: 15%;
-}
+} */
 
-.progressValue {
+/* .progressValue {
   animation: load 3s normal forwards;
   box-shadow: 0 10px 40px -10px #fff;
   background: #cfea11;
@@ -33,4 +48,4 @@
   .progress {
     display: none;
   }
-}
+} */

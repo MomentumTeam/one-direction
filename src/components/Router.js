@@ -10,13 +10,17 @@ export const AppRouter = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" render={() => <PersonalInformationForm />} />
+        <Route
+          exact
+          path="/personalInformation"
+          render={() => <PersonalInformationForm />}
+        />
         <Route exact path="/folders" render={() => <SharingFolders />} />
         <Route exact path="/systems" render={() => <Systems />} />
         <Route exact path="/fingerPrint" render={() => <FingerPrint />} />
         <Route exact path="/finish" render={() => <EndProcess />} />
         <Route exact path="/faq" render={() => <Faq />} />
-        <Redirect to="/" />
+        <Redirect exact to="/" />
       </Switch>
     </div>
   );
