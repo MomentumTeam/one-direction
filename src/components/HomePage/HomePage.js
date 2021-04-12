@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress } from "../progress/Progress";
+import { AppProgress } from "../progress/Progress";
 import { Avatar, Image, Button, Tooltip, Typography,  } from "antd";
 import {
     ArrowLeftOutlined,
@@ -60,7 +60,7 @@ function HomePage() {
                     width: "60%",
                     top: "5%",
                     left: "2%",
-                }}> <Progress /></div>
+                }}> <AppProgress /></div>
 
                 <img className={styles.logo} src={process.env.PUBLIC_URL + "/img/logoTop.png"} />
 
