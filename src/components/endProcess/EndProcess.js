@@ -35,6 +35,31 @@ export const EndProcess = () => {
           </Radio>
         </Radio.Group>
       </div>
+      <div
+        style={{
+          marginTop: "10%",
+          width: "30%",
+          margin: "auto",
+          //   height: "50%",
+          padding: "3%",
+          borderRadius: "25px",
+          //   backgroundImage: `url(${process.env.PUBLIC_URL}/img/among_us_hd.png)`,
+          backgroundColor: "#001322",
+          color: "white",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Title level={5} style={{ color: "#CFEA11" }}>
+          פרטי יוזר וסיסמה ישלחו אליך לפני המעבר
+        </Title>
+        <Title level={3} style={{ color: "white" }}>
+          !בהצלחה
+        </Title>
+        <img src={process.env.PUBLIC_URL + "/img/amongs.png"} alt=""></img>
+      </div>
     </Content>
   );
 };

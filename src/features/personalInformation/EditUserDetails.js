@@ -1,4 +1,5 @@
 import { Row, Col, Form, Input, Radio, Select } from "antd";
+import { UsersAutoComplete } from "../../components/usersAutocomplete/UsersAutocomplete";
 const { Option } = Select;
 export const EditUserDetails = () => {
   return (
@@ -55,13 +56,13 @@ export const EditUserDetails = () => {
             <Input size="large" disabled value="435456455" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" span={6}>
+        {/* <Col className="gutter-row" span={6}>
           <Form.Item name="uniqueIdentifier" label="מזהה יחודי">
             <Select size="large" defaultValue="מזהה" allowClear>
               <Option value="lucy">יונה</Option>
             </Select>
           </Form.Item>
-        </Col>
+        </Col> */}
         <Col className="gutter-row" span={6}>
           <Form.Item label="שם תצוגה (היררכיה)">
             <Input size="large" disabled value="אלי קופטר" />
@@ -102,9 +103,10 @@ export const EditUserDetails = () => {
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
-          <Form.Item label="פרטי מפקד ישיר">
-            <Input size="large" disabled value="" />
-          </Form.Item>
+          {/* <Form.Item label="פרטי מפקד ישיר" name="commmmm"> */}
+          {/* <Input size="large" disabled value="" /> */}
+          <UsersAutoComplete />
+          {/* </Form.Item> */}
         </Col>
       </Row>
     </>

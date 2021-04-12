@@ -1,14 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const personalInformationSlice = createSlice({
-  name: 'PersonalInformation',
+  name: "PersonalInformation",
   initialState: {
-    heName: "",
-    enName:"",
-    displayName:"",
-    phoneNumber:0000000000,
-    computerName:"",
-    personalNumber:0
+    user: {
+      heName: "",
+      enName: "",
+      displayName: "",
+      phoneNumber: 0000000000,
+      computerName: "",
+      personalNumber: 0,
+    },
   },
   reducers: {
     update: (state, action) => {
@@ -19,6 +21,6 @@ export const personalInformationSlice = createSlice({
 
 export const { update } = personalInformationSlice.actions;
 
-export const selectPersonalInformation =  state => state.PersonalInformation;
+export const selectPersonalInformation = (state) => state.PersonalInformation;
 
 export default personalInformationSlice.reducer;

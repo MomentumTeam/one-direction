@@ -23,18 +23,21 @@ const tabs = [
   },
   {
     id: 1,
-    path: "/",
+    path: "/personalInformation",
   },
 ];
 export const Tabs = () => {
   let location = useLocation();
   let currTab = tabs.find((tab) => tab.path === location.pathname);
-
-  return (
-    <div style={{ display: "flex" }}>
-      {tabs.map((tab) => (
-        <Tab key={tab.id} tab={tab} currTab={currTab} />
-      ))}
-    </div>
-  );
+  if (currTab) {
+    return (
+      <div style={{ display: "flex" }}>
+        {tabs.map((tab) => (
+          <Tab key={tab.id} tab={tab} currTab={currTab} />
+        ))}
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
