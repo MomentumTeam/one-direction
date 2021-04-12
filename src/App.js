@@ -13,6 +13,7 @@ import {
 import { Tabs } from "./components/tabs/Tabs";
 import { Haeder } from "./components/haeder/Haeder";
 import SideNavBar from "./components/SideNavBar";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <HomePage />
             </Route>
             <Route path="/:name">
               <Nested />
@@ -65,8 +66,4 @@ function Nested() {
       </div>
     </div>
   );
-}
-
-function Home() {
-  return <div> home </div>;
 }

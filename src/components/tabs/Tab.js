@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Tab.module.css";
+
 export const Tab = ({ tab, currTab }) => {
   const getIcon = () => {
     if (tab === currTab) {

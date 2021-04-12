@@ -1,5 +1,6 @@
 import { Progress } from "antd";
 import styles from "./Progress.module.css";
+
 export const AppProgress = () => {
   return (
     // <div>
