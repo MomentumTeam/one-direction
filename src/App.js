@@ -27,33 +27,6 @@ function App() {
               <Nested />
             </Route>
           </Switch>
-          {/* <div className="grid-container">
-            <div className="content">
-              <AppRouter />
-            </div>
-            <div className="haeder">
-              <Haeder />
-            </div>
-            <div className="aside">
-              <SideNavBar />
-            </div>
-            <div className="logo">
-              <div className="app-name">
-                <p className="first-word">
-                  my<strong className="second-word">one</strong>
-                </p>
-              </div>
-              <img
-                className="logo-img"
-                src={process.env.PUBLIC_URL + "/img/among_us_hd.png"}
-              ></img>
-
-              <img
-                className="inner-image"
-                src={process.env.PUBLIC_URL + "/img/logo.png"}
-              ></img>
-            </div>
-          </div> */}
         </Router>
       </div>
     </ConfigProvider>
