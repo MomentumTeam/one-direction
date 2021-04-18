@@ -6,16 +6,15 @@ import SystemsList from "../../components/SystemsList";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
-import { selectSystems,selectAddedSystems } from "../systems/SystemsSlice";
+import { selectSystems } from "../systems/SystemsSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
 function Forms() {
     const systems = useSelector(selectSystems);
-    const addedSystems = useSelector(selectAddedSystems);
 
     const finish = (e) => {
-        console.log('Final Systems List: ', addedSystems);
+        console.log('Final Systems List: ', systems);
     }
 
     return (

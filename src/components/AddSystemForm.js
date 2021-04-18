@@ -9,14 +9,15 @@ import {
     Select,
 } from "antd";
 import styles from "../features/systems/Systems.module.css";
-import { useDispatch } from "react-redux";
-import { Add, AddToExistingList } from "../features/systems/SystemsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToExistingList, selectSystemsOptions } from "../features/systems/SystemsSlice";
 
 
-const systemsOptions = [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }];
+// const systemsOptions = [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }];
 
 function AddSystemForm({ systems }) {
     const [form] = Form.useForm();
+    const systemsOptions = useSelector(selectSystemsOptions);
     const dispatch = useDispatch();
     const [systemName, setSystemName] = useState("");
     const [usage, setUsage] = useState("");
@@ -33,15 +34,8 @@ function AddSystemForm({ systems }) {
             rate: rate,
         };
 
-        const toList = {
-            systemName: systemName,
-            logo: `/img/systems/${imgName}.png`,
-        };
-
-        console.log("toList: ", toList);
         console.log("toAdd: ", toAdd);
 
-        dispatch(Add(toList));
         dispatch(AddToExistingList(toAdd));
 
         form.resetFields(); //reset inputs in form

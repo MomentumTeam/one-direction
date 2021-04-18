@@ -2,17 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    systems: [  
+    systems: [
         {
             systemName: "Chrome",
+            usage: "aaaa aaaa",
+            rate: 2,
         },
         {
             systemName: "Office",
+            usage: "bbbbb bbbbb",
+            rate: 3,
         },
     ],
-    addedSystems: [
-
-    ]
+    systemsOptions: [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }]
 };
 
 
@@ -20,22 +22,21 @@ export const SystemsSlice = createSlice({
     name: "systems",
     initialState,
     reducers: {
-        Add: (state, action) => {
-            state.systems = [...state.systems, action.payload];
-
-        },
         AddToExistingList: (state, action) => {
-            state.addedSystems = [...state.addedSystems, action.payload];
-
+            state.systems = [...state.systems, action.payload]; //add to list
+            state.systemsOptions = state.systemsOptions.filter((options) => options.value !== action.payload.systemName); //remove from options of selcet
         },
-
+        RemoveFromExistingList: (state, action) => {
+            state.systems = state.systems.filter((system) => system.systemName !== action.payload.systemName); //remove from list
+            state.systemsOptions = [...state.systemsOptions, {value:action.payload.systemName}]; //return option to select
+        },
     }
 });
 
 
 export const selectSystems = (state) => state.systems.systems;
-export const selectAddedSystems = (state) => state.systems.addedSystems;
+export const selectSystemsOptions = (state) => state.systems.systemsOptions;
 
 
-export const { Add, AddToExistingList} = SystemsSlice.actions;
+export const { AddToExistingList, RemoveFromExistingList } = SystemsSlice.actions;
 export default SystemsSlice.reducer;

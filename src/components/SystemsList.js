@@ -1,5 +1,7 @@
 import React from 'react'
+import { useDispatch } from "react-redux";
 import styles from "../features/systems/Systems.module.css";
+import { RemoveFromExistingList } from "../features/systems/SystemsSlice";
 import {
     List,
     Divider,
@@ -7,11 +9,20 @@ import {
     Typography
 } from "antd";
 
-
-function SystemsList({systems}) {
+function SystemsList({ systems }) {
+    const dispatch = useDispatch();
 
     return (
-        <div className="systemsList">
+        <div  style={{
+            height: "500px",
+            padding: "5px 24px",
+            marginLeft:"5%",
+            overflow: "auto",
+            border: "1px solid #e8e8e8",
+            borderRadius: "4px",
+        }}
+        >
+
             <List
                 itemLayout="horizontal"
                 // bordered
@@ -19,7 +30,12 @@ function SystemsList({systems}) {
                 dataSource={systems}
                 renderItem={(item) => (
                     <div>
-                        <List.Item>
+                        <List.Item
+                            actions={[<button onClick={() => dispatch(RemoveFromExistingList(item))}
+                            // key="list-loadmore-edit"
+                            >הסר</button>]}
+
+                        >
                             <List.Item.Meta
                                 avatar={
                                     <Image
