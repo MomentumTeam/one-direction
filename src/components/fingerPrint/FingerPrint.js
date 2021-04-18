@@ -1,10 +1,20 @@
+import { useHistory } from 'react-router-dom';
 import { Button, Col, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Content } from "../Content";
 import styles from "./FingerPrint.module.css";
 import { OperationTime } from "./OperationTime";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+
+
+
 export const FingerPrint = () => {
+  let history = useHistory();
+
+  const finish = (e) => {
+    history.push("/finish");
+  }
+
   return (
     <Content>
       <div
@@ -74,7 +84,7 @@ export const FingerPrint = () => {
         <Row justify="end" align="bottom" className={styles.tailRow}>
           <div>
             <Col>
-              <Button shape="round" size="large">
+              <Button onClick={finish} shape="round" size="large">
                 סיימתי הרכשת אצבע
                 <ArrowLeftOutlined />
               </Button>

@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { Typography } from "antd";
 import styles from "./SharingFolders.module.css";
 import {
@@ -12,11 +13,13 @@ import { useSelector } from "react-redux";
 const { Title, Paragraph, Text } = Typography;
 
 function SharingFolders() {
+  let history = useHistory();
   const [form] = Form.useForm();
   const folders = useSelector(selectFolders);
 
   const onFinish = (values) => {
     console.log("Received values of form:", values);
+    history.push("/systems");
   };
 
   const onFinishFailed = (errorInfo) => {

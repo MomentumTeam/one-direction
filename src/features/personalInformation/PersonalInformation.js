@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { Button, Form, Col, Row, message } from "antd";
 import { Content } from "../../components/Content";
 import { EditUserDetails } from "./EditUserDetails";
@@ -8,11 +9,14 @@ import styles from "./PersonalInformation.module.css";
 import { EditAvatar } from "./EditAvatar";
 import Title from "antd/lib/typography/Title";
 
+
 export const PersonalInformationForm = () => {
+  let history = useHistory();
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log(values);
+    history.push("/folders");
   };
 
   return (

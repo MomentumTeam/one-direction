@@ -1,6 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { AppProgress } from "../progress/Progress";
-import { Avatar, Image, Button, Tooltip, Typography,  } from "antd";
+import { Avatar, Image, Button, Tooltip, Typography, } from "antd";
 import {
     ArrowLeftOutlined,
 } from "@ant-design/icons";
@@ -30,13 +31,12 @@ const tabs = [
         id: 5,
         path: "/finish",
     },
-
-
 ];
 
 
 function HomePage() {
     const status = "/folders";
+    let history = useHistory();
 
     const getIcon = (tab, str) => {
         console.log('str', str)
@@ -161,15 +161,24 @@ function HomePage() {
                             />
                         </Button>
                     </div>
-                    <Button htmlType="submit" shape="round" size="large" href={"http://localhost:3000"+status} 
-                    style={{
-                        marginTop: "400px",
-                        marginLeft: "150px",
-                        // float: "left"
-                    }}>
+
+
+
+                    <Button htmlType="submit" shape="round" size="large"
+                        onClick={() => {
+                            history.push(status);
+                        }}
+                        style={{
+                            marginTop: "400px",
+                            marginLeft: "150px",
+                            // float: "left"
+                        }}>
                         אפשר להתקדם
             <ArrowLeftOutlined />
-                    </Button></div>
+                    </Button>
+
+
+                </div>
             </div>
         </div >
     )

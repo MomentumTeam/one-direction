@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { Typography, Input, Form, Button } from "antd";
 import styles from "./Systems.module.css";
 import AddSystemForm from "../../components/AddSystemForm";
@@ -11,10 +12,12 @@ import { selectSystems } from "../systems/SystemsSlice";
 const { Title, Paragraph, Text } = Typography;
 
 function Forms() {
+    let history = useHistory();
     const systems = useSelector(selectSystems);
 
     const finish = (e) => {
         console.log('Final Systems List: ', systems);
+        history.push("/fingerPrint");
     }
 
     return (
