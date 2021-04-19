@@ -1,4 +1,5 @@
 import styles from "./FingerPrint.module.css";
+
 export const OperationTime = ({
   title,
   firstLine,

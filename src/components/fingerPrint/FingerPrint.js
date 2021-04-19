@@ -2,9 +2,9 @@ import { useHistory } from 'react-router-dom';
 import { Button, Col, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Content } from "../Content";
-import styles from "./FingerPrint.module.css";
 import { OperationTime } from "./OperationTime";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import styles from "./FingerPrint.module.css";
 
 
 
@@ -17,13 +17,7 @@ export const FingerPrint = () => {
 
   return (
     <Content>
-      <div
-        style={{
-          width: "100%",
-          padding: "2%",
-          direction: "rtl",
-        }}
-      >
+      <div className={styles.fatherDiv}>
         <Row gutter={[24, 16]}>
           <Col span={12}>
             <Title level={3}> הרכשת אצבע</Title>

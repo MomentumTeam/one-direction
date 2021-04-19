@@ -8,12 +8,10 @@ import {
     Col,
     Select,
 } from "antd";
-import styles from "../features/systems/Systems.module.css";
+import styles from "./Systems.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AddToExistingList, selectSystemsOptions } from "../features/systems/SystemsSlice";
+import { AddToExistingList, selectSystemsOptions } from "./SystemsSlice";
 
-
-// const systemsOptions = [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }];
 
 function AddSystemForm({ systems }) {
     const [form] = Form.useForm();
@@ -101,12 +99,11 @@ function AddSystemForm({ systems }) {
             >
 
 
-                <div className="Input" style={{ backgroundColor: "", marginTop: "" }}>
+                <div className="Input">
                     <Row gutter={(16, 48)}>
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="שם המערכת"
-                                style={{ backgroundColor: "" }}
                                 rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
                                 required
                                 name="systemName"
@@ -120,14 +117,12 @@ function AddSystemForm({ systems }) {
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="למה משמש?"
-                                style={{ backgroundColor: "" }}
                                 rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
                                 required
                                 name="usage"
 
                             >
                                 <Input
-                                    style={{}}
                                     size="large"
                                     onChange={onChangeUsage}
                                     value={usage}
@@ -138,20 +133,15 @@ function AddSystemForm({ systems }) {
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="דירוג חשיבות"
-                                style={{ backgroundColor: "" }}
                             >
                                 <Rate
                                     className={styles.verticallyCentered}
                                     allowClear={false}
                                     onChange={onChangeRate}
                                     value={rate}
+                                    className={styles.rateContainer}
                                     style={{
-                                        backgroundColor: "",
-                                        fontSize: "250%",
-                                        stroke: "#001322",
-                                        strokeWidth: "50",
-                                        strokeLinecap: "butt",
-                                        strokeDasharray: "0",
+                                        fontSize: "250%"
                                     }}
                                 />
                             </Form.Item>

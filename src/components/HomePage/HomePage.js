@@ -38,8 +38,8 @@ function HomePage() {
     const status = "/folders";
     let history = useHistory();
 
-    const getIcon = (tab, str) => {
-        console.log('str', str)
+    const getIcon = (tab) => {
+        // console.log('str', str)
         console.log('tab', tab.id);
 
         if (tab.path === status) {
@@ -55,12 +55,9 @@ function HomePage() {
     return (
         <div styles={{ color: "white" }}>
             <div className={styles.topDiv}>
-                <div style={{
-                    position: "absolute",
-                    width: "60%",
-                    top: "5%",
-                    left: "2%",
-                }}> <AppProgress /></div>
+                <div className={styles.appProgress}>
+                    <AppProgress />
+                </div>
 
                 <img className={styles.logo} src={process.env.PUBLIC_URL + "/img/logoTop.png"} />
 
@@ -86,59 +83,38 @@ function HomePage() {
                         src={<Image src={process.env.PUBLIC_URL + "/img/kermit.jpg"} />}
                     />
 
-                    <Paragraph
-                        style={{
-                            backgroundColor: "",
-                            marginRight: "5%",
-                            marginTop: "2%",
-                            fontSize: "30px",
-                            color: "white"
-                        }}
-                    >
+                    <Paragraph className={styles.paragraph}>
                         <strong>היי אלי קופטר</strong>
                         <br />
 שמחים שנבחרת להצטרף אלינו ל-                             <strong>one</strong>aman
 
 <br />
-                        <Text style={{
-                            fontSize: "18px",
-                            color: "white"
-                        }}>הרשת החדשה של אמ"ן המאפשרת שיתוף פעולה והפקת מודיעין בצורה הטובה ביותר
+                        <Text className={styles.text}
+                        >הרשת החדשה של אמ"ן המאפשרת שיתוף פעולה והפקת מודיעין בצורה הטובה ביותר
 </Text>
                     </Paragraph>
-
-
-
-
-
 
 
                 </div>
 
                 <div className={styles.blackDiv}>
-                    <Title level={3} style={{
-                        color: "white",
-                        position: "relative",
-                        top: "50%",
-                        right: "5%",
-                        transform: "translateY(-30%)"
-                    }}>הסטטוס שלי בתהליך</Title>
+                    <Title level={3} className={styles.status} style={{ color: "white",}}>הסטטוס שלי בתהליך</Title>
 
                     {/* <div> */}
                     {tabs.map((tab) => (
                         tab.path === status ?
                             <div className={styles.tab} style={{ backgroundColor: "white" }}>
-                                {getIcon(tab, "first")}
+                                {getIcon(tab)}
                             </div>
                             :
                             <div className={styles.tab}>
-                                {getIcon(tab, "second")}
+                                {getIcon(tab)}
                             </div>
                     ))}
                     {/* </div> */}
                 </div>
 
-                <div style={{ backgroundColor: "", }}>
+                <div>
 
                     <div className={styles.sideNavBarButtonsDiv}>
                         <Tooltip
@@ -162,22 +138,14 @@ function HomePage() {
                         </Button>
                     </div>
 
-
-
                     <Button htmlType="submit" shape="round" size="large"
                         onClick={() => {
                             history.push(status);
                         }}
-                        style={{
-                            marginTop: "400px",
-                            marginLeft: "150px",
-                            // float: "left"
-                        }}>
+                        className={styles.button}>
                         אפשר להתקדם
             <ArrowLeftOutlined />
                     </Button>
-
-
                 </div>
             </div>
         </div >

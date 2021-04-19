@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { Typography, Input, Form, Button } from "antd";
 import styles from "./Systems.module.css";
-import AddSystemForm from "../../components/AddSystemForm";
-import SystemsList from "../../components/SystemsList";
+import AddSystemForm from "./AddSystemForm";
+import SystemsList from "./SystemsList";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
-import { selectSystems } from "../systems/SystemsSlice";
+import { selectSystems } from "./SystemsSlice";
 
 const { Title, Paragraph, Text } = Typography;
 

@@ -12,9 +12,7 @@ export const FoldersSlice = createSlice({
     reducers: {
         Add: (state, action) => {
             state.folders = [...state.folders, action.payload];
-
         },
-
     }
 });
 
