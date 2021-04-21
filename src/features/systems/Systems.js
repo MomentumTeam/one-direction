@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { Typography, Input, Form, Button } from "antd";
 import styles from "./Systems.module.css";
-import AddSystemForm from "../../components/AddSystemForm";
-import SystemsList from "../../components/SystemsList";
+import AddSystemForm from "./AddSystemForm";
+import SystemsList from "./SystemsList";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
-import { selectSystems,selectAddedSystems } from "../systems/SystemsSlice";
+import { selectSystems } from "./SystemsSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
 function Forms() {
+    let history = useHistory();
     const systems = useSelector(selectSystems);
-    const addedSystems = useSelector(selectAddedSystems);
 
     const finish = (e) => {
-        console.log('Final Systems List: ', addedSystems);
+        console.log('Final Systems List: ', systems);
+        history.push("/fingerPrint");
     }
 
     return (

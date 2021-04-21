@@ -1,5 +1,6 @@
 import { Tab } from "./Tab";
 import { useLocation } from "react-router-dom";
+
 const tabs = [
   {
     id: 6,
@@ -26,6 +27,8 @@ const tabs = [
     path: "/personalInformation",
   },
 ];
+
+
 export const Tabs = () => {
   let location = useLocation();
   let currTab = tabs.find((tab) => tab.path === location.pathname);

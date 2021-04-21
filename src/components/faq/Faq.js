@@ -21,7 +21,7 @@ function Faq() {
         <div className={styles.fatherDiv}>
             <Title level={2}>שאלות ותשובות FAQ</Title>
 
-            <Collapse  defaultActiveKey={['1']} style={{ margin: "3%",border:"none" }}
+            <Collapse  defaultActiveKey={['1']} className={styles.collapse}
                 // ghost
                 // bordered={false}
                 expandIcon={({ isActive }) =>

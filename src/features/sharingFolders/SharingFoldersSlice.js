@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    folders: ["C:\\Users\\Liora Yacob","C:\\Users\\Liora Yacob\\my-one","C:\\Users\\Liora Yacob\\one-direction"]
+    folders: ["C:\\Users\\Liora Yacob", "C:\\Users\\Liora Yacob\\my-one", "C:\\Users\\Liora Yacob\\one-direction"]
 };
 
 
@@ -10,11 +10,14 @@ export const FoldersSlice = createSlice({
     name: "folders",
     initialState,
     reducers: {
-        Add: (state, action) => {
-            state.folders = [...state.folders, action.payload];
-
+        AddFolders: (state, action) => {
+            let folders = action.payload.map(obj => obj.folderPath);
+            state.folders = state.folders.concat(folders)
         },
 
+        RemoveFolder: (state, action) => {
+            state.folders = state.folders.filter((folder) => folder !== action.payload);
+        },
     }
 });
 
@@ -22,5 +25,5 @@ export const FoldersSlice = createSlice({
 export const selectFolders = (state) => state.folders.folders;
 
 
-export const { Add } = FoldersSlice.actions;
+export const { AddFolders, RemoveFolder } = FoldersSlice.actions;
 export default FoldersSlice.reducer;

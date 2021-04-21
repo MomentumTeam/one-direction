@@ -8,9 +8,13 @@ export const Tab = ({ tab, currTab }) => {
     }
     return `/img/${tab.id}${tab.id < currTab.id ? "D" : ""}.png`;
   };
-  console.log(tab, currTab);
+
+  // console.log(tab, currTab);
+
   const isDone = tab.id <= currTab.id ? true : false;
-  console.log(process.env);
+
+  // console.log(process.env);
+
   return (
     <div>
       <NavLink

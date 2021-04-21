@@ -8,15 +8,14 @@ import {
     Col,
     Select,
 } from "antd";
-import styles from "../features/systems/Systems.module.css";
-import { useDispatch } from "react-redux";
-import { Add, AddToExistingList } from "../features/systems/SystemsSlice";
+import styles from "./Systems.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToExistingList, selectSystemsOptions } from "./SystemsSlice";
 
-
-const systemsOptions = [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }];
 
 function AddSystemForm({ systems }) {
     const [form] = Form.useForm();
+    const systemsOptions = useSelector(selectSystemsOptions);
     const dispatch = useDispatch();
     const [systemName, setSystemName] = useState("");
     const [usage, setUsage] = useState("");
@@ -33,15 +32,8 @@ function AddSystemForm({ systems }) {
             rate: rate,
         };
 
-        const toList = {
-            systemName: systemName,
-            logo: `/img/systems/${imgName}.png`,
-        };
-
-        console.log("toList: ", toList);
         console.log("toAdd: ", toAdd);
 
-        dispatch(Add(toList));
         dispatch(AddToExistingList(toAdd));
 
         form.resetFields(); //reset inputs in form
@@ -107,12 +99,11 @@ function AddSystemForm({ systems }) {
             >
 
 
-                <div className="Input" style={{ backgroundColor: "", marginTop: "" }}>
+                <div className="Input">
                     <Row gutter={(16, 48)}>
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="שם המערכת"
-                                style={{ backgroundColor: "" }}
                                 rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
                                 required
                                 name="systemName"
@@ -126,14 +117,12 @@ function AddSystemForm({ systems }) {
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="למה משמש?"
-                                style={{ backgroundColor: "" }}
                                 rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
                                 required
                                 name="usage"
 
                             >
                                 <Input
-                                    style={{}}
                                     size="large"
                                     onChange={onChangeUsage}
                                     value={usage}
@@ -144,20 +133,15 @@ function AddSystemForm({ systems }) {
                         <Col className="gutter-row" span={6}>
                             <Form.Item
                                 label="דירוג חשיבות"
-                                style={{ backgroundColor: "" }}
                             >
                                 <Rate
                                     className={styles.verticallyCentered}
                                     allowClear={false}
                                     onChange={onChangeRate}
                                     value={rate}
+                                    className={styles.rateContainer}
                                     style={{
-                                        backgroundColor: "",
-                                        fontSize: "250%",
-                                        stroke: "#001322",
-                                        strokeWidth: "50",
-                                        strokeLinecap: "butt",
-                                        strokeDasharray: "0",
+                                        fontSize: "250%"
                                     }}
                                 />
                             </Form.Item>

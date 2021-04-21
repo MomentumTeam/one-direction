@@ -11,8 +11,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Tabs } from "./components/tabs/Tabs";
-import { Haeder } from "./components/haeder/Haeder";
-import SideNavBar from "./components/SideNavBar";
+import { Header } from "./components/Header";
+import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./components/HomePage/HomePage";
 
 function App() {
@@ -42,8 +42,8 @@ function Nested() {
       <div className="content">
         <AppRouter />
       </div>
-      <div className="haeder">
-        <Haeder />
+      <div className="header">
+        <Header />
       </div>
       <div className="aside">
         <SideNavBar />

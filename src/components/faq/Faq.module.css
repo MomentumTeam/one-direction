@@ -3,6 +3,11 @@
     margin-top: 3%;
 }
 
+.collapse{
+    margin: 3%;
+    border: none;
+}
+
 .faqTitlesDiv {
     /* display: flex;
     flex-direction: row; */

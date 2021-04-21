@@ -32,15 +32,20 @@
   transform: translateY(-30%);
 }
 
-.rate {
-  background-color: "";
-  font-size: "250%";
-  stroke: "#001322";
-  stroke-width: "25";
-  stroke-linecap: "butt";
-  stroke-dasharray: "0";
-  position: relative;
-  top: 45%;
-  transform: translateY(-50%);
+.rateContainer{
+  stroke: #001322;
+  stroke-width: 50;
+  stroke-linecap: butt;
+  stroke-dasharray: 0;
+}
+
+
+.systemsListContainer{
+  height: 500px;
+  padding: 5px 24px;
+  margin-left:5%;
+  overflow: auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
 }
 

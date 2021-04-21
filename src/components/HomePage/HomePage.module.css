@@ -4,6 +4,13 @@
   background-image: url(../../images/TopSky.png);
 }
 
+.appProgress {
+  position: absolute;
+  width: 60%;
+  top: 5%;
+  left: 2%;
+}
+
 .bottomDiv {
   height: 535px;
   width: 100%;
@@ -46,6 +53,34 @@
   border-bottom-left-radius: 100%800px;
 }
 
+.paragraph {
+  /* background-color: ; */
+  margin-right: 5%;
+  margin-top: 2%;
+  font-size: 30px;
+  color: white;
+}
+
+.text {
+  font-size: 18px;
+  color: white;
+}
+
+.status {
+  position: relative;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-30%);
+}
+
+.statusTitle {
+  color: white;
+  position: relative;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-30%);
+}
+
 .avatar {
   border: 2px solid #f2f2f2;
   margin-right: 15%;
@@ -64,7 +99,7 @@
 
 .blackDiv {
   display: flex;
-  padding-left:40px;
+  padding-left: 40px;
   flex-direction: row-reverse;
   justify-content: space-around;
   background-color: #001322;
@@ -114,7 +149,7 @@
   /* position: absolute; */
 
   display: flex;
-size: 30px;
+  size: 30px;
   flex-direction: column;
   /* bottom: 5%; */
   float: right;
@@ -122,31 +157,7 @@ size: 30px;
   margin-right: 50px;
 }
 
-.settingsContainer{
-background-color: #159710;
-position: relative;
-text-align: center;
-color: white;
-}
-
-.q{
-    margin-bottom: 100px;
-    /* left: 50%; */
-    opacity: 0;
-    /* color:white; */
-    /* background-color: #001322; */
-
-}
-
-.t{
-    margin-bottom: 100px;
-    /* left: 50%; */
-    opacity: 0;
-    color:white;
-    background-color: #001322;
-
-}
-
-.settingsContainer:hover .q {
-    opacity: 1;
+.button {
+  margin-top: 400px;
+  margin-left: 150px;
 }

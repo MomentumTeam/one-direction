@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { Typography } from "antd";
 import styles from "./SharingFolders.module.css";
 import {
@@ -6,17 +7,27 @@ import {
   MinusCircleOutlined,
 } from "@ant-design/icons";
 import { Form, Input, Button, Space } from "antd";
-import { selectFolders } from "./SharingFoldersSlice";
-import { useSelector } from "react-redux";
+import { selectFolders, AddFolders, RemoveFolder } from "./SharingFoldersSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const { Title, Paragraph, Text } = Typography;
 
 function SharingFolders() {
+  let history = useHistory();
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
   const folders = useSelector(selectFolders);
 
   const onFinish = (values) => {
-    console.log("Received values of form:", values);
+    console.log('values', values.additionalSharingFolders)
+    console.log('onFinish');
+    if (values !== null) {
+      console.log('null');
+      dispatch(AddFolders(values.additionalSharingFolders));
+    }
+    console.log('history')
+    history.push("/systems");
+
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -43,33 +54,36 @@ function SharingFolders() {
       >
 
         {folders.map((folder) => (
-          <Form.Item label={["ניתוב תיקייה ", folders.indexOf(folder) + 1]}>
-            <Input
-              className={styles.input}
-              disabled
-              value={folder}
-            />
-          </Form.Item>
+          <Space key={folders.indexOf(folder)} align="center ">
+            <Form.Item label={["ניתוב תיקייה ", folders.indexOf(folder) + 1]} >
+              <Input
+                className={styles.input}
+                disabled
+                value={folder}
+              />
+            </Form.Item>
+            <MinusCircleOutlined style={{}} onClick={() => {
+              dispatch(RemoveFolder(folder));
+            }} />
+          </Space>
+
         ))}
 
         <Form.List name="additionalSharingFolders">
           {(fields, { add, remove }) => (
             <>
               {fields.map((field) => (
-                <Space key={field.key} align="baseline">
+                <Space key={field.key} align="center ">
                   <Form.Item
                     {...field}
                     label={["ניתוב תיקייה ", fields.indexOf(field) + folders.length + 1]}
                     name={[field.name, `folderPath`]}
                     fieldKey={[field.fieldKey, "folderPath"]}
-                    rules={[{ required: true, message: "Missing Value" }]}
+                    rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
                   >
                     <Input className={styles.input} />
                   </Form.Item>
                   <MinusCircleOutlined onClick={() => {
-                    console.log("field to remove: ")
-                    console.log(field)
-
                     remove(field.name)
                   }} />
                 </Space>

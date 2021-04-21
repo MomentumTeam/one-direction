@@ -10,7 +10,7 @@
   grid-template-rows: 0.2fr 1.9fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "haeder aside logo"
+    "header aside logo"
     "content aside logo"
     "content aside logo";
 }
@@ -19,9 +19,10 @@
   grid-area: content;
   background-color: #f2f2f2;
 }
-.haeder {
+
+.header {
   width: 100%;
-  grid-area: haeder;
+  grid-area: header;
   background-color: #001322;
   display: flex;
   flex-direction: row;
@@ -124,19 +125,6 @@
   align-self: flex-start;
   order: 0;
 }
-.userAvatar {
-  /* padding:2%; */
-  border: 2px solid #f2f2f2;
-  /* width: 5%; */
-}
-
-.sideNavBarButtonsDiv {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  position: absolute;
-  bottom: 5%;
-}
 
 .ant-progress-bg {
   height: 0.9em !important;
@@ -157,7 +145,7 @@
   .grid-container {
     grid-template-columns: 2fr 0.1fr;
     grid-template-areas:
-      "haeder aside"
+      "header aside"
       "content aside"
       "content aside";
   }
