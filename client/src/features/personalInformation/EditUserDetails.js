@@ -1,13 +1,19 @@
 import { Row, Col, Form, Input, Radio, Select } from "antd";
-import { UsersAutoComplete } from "../../components/usersAutocomplete/UsersAutocomplete";
+import { UsersAutoComplete } from "../../components/usersAutocomplete/UsersAutocomplete"; 
+import { useSelector, useDispatch } from "react-redux";
+import { selectUserObj } from "../user/userSlice";
+
 const { Option } = Select;
+
 export const EditUserDetails = () => {
+  const user = useSelector(selectUserObj);
+  
   return (
     <>
       <Row gutter={(16, 48)}>
         <Col className="gutter-row" span={6}>
           <Form.Item label="שם מלא בעברית">
-            <Input size="large" disabled value="אלי קופטר" />
+            <Input size="large" disabled value={user.First_Name_HEB+" "+user.Last_Name_HEB} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
@@ -21,22 +27,22 @@ export const EditUserDetails = () => {
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item label="מס זהות">
-            <Input size="large" disabled value="658306084" />
+            <Input size="large" disabled value={user.ID_Number} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item label="מס אישי">
-            <Input size="large" disabled value="4902611" />
+            <Input size="large" disabled value={user.Private_Number} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item label="דרגה">
-            <Input size="large" disabled value="טוראי" />
+            <Input size="large" disabled value={user.Rank_ID} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item label="טלפון נייד">
-            <Input size="large" disabled value="054-6428356" />
+            <Input size="large" disabled value={user.Phone_Number} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
@@ -48,12 +54,12 @@ export const EditUserDetails = () => {
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item name="phoneNumber" label="מס טלפון">
-            <Input size="large" value="054-6428356" />
+            <Input size="large" value={user.Phone_Number} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
           <Form.Item label="פרופיל תפקידן">
-            <Input size="large" disabled value="435456455" />
+            <Input size="large" disabled value={user.User_Profile_ID} />
           </Form.Item>
         </Col>
         {/* <Col className="gutter-row" span={6}>
@@ -65,7 +71,7 @@ export const EditUserDetails = () => {
         </Col> */}
         <Col className="gutter-row" span={6}>
           <Form.Item label="שם תצוגה (היררכיה)">
-            <Input size="large" disabled value="אלי קופטר" />
+            <Input size="large" disabled value={user.Hierarchy} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={6}>
