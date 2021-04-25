@@ -1,9 +1,10 @@
-import { Radio } from "antd";
-import Title from "antd/lib/typography/Title";
+import { Radio, Row, Col, Button, Typography } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { Content } from "../Content";
 import styles from "./EndProcess.module.css";
 
+const { Title } = Typography;
 
 export const EndProcess = () => {
   const [value, setValue] = useState(1);
@@ -12,6 +13,11 @@ export const EndProcess = () => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
+  const finish = (e) => {
+    window.alert("סיום תהליך");
+  }
+
   return (
     <Content>
       <div className={styles.fatherDiv}>
@@ -35,6 +41,17 @@ export const EndProcess = () => {
         </Title>
         <img src={process.env.PUBLIC_URL + "/img/amongs.png"} alt=""></img>
       </div>
+
+      <Row justify="end" align="bottom" className={styles.tailRow}>
+        <div>
+          <Col>
+            <Button onClick={finish} shape="round" size="large">
+              סיום תהליך
+                            <ArrowLeftOutlined />
+            </Button>
+          </Col>
+        </div>
+      </Row>
     </Content>
   );
 };

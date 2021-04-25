@@ -34,7 +34,7 @@ module.exports = override(
       "@progress-default-color": "#CFEA11",
       "@progress-info-text-color": "#FFFFFF",
       //Faq
-      "@collapse-content-bg": "#e3e3e3",
+      "@collapse-content-bg": "#E3E3E3",
       "@collapse-header-bg": "#f2f2f2",
       "@collapse-panel-border-radius": "none",
     },

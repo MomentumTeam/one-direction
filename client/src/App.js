@@ -25,14 +25,12 @@ function App() {
   const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    console.log('useEffect');
     dispatch(getUser());
-
   }, []);
 
 
   if (loading===true) {
-    return <div>Waiting for user/config</div>;
+    return <div>Waiting for user from DB</div>;
   }
   else {
 

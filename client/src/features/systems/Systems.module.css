@@ -4,8 +4,9 @@
 }
 
 .submit {
-  padding-bottom: 15px;
-  position: absolute;
+  /* padding-bottom: 15px; */
+  /* position: absolute; */
+  float:left;
   left: 5%;
   bottom: 5%;
 }
@@ -41,7 +42,7 @@
 
 
 .systemsListContainer{
-  height: 500px;
+  height: 400px;
   padding: 5px 24px;
   margin-left:5%;
   overflow: auto;
@@ -49,3 +50,6 @@
   border-radius: 4px;
 }
 
+.tailRow {
+  height: 40%;
+}

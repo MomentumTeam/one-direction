@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import { Typography, Input, Form, Button } from "antd";
+import { Typography, Input, Form, Button, Row, Col } from "antd";
 import styles from "./Systems.module.css";
 import AddSystemForm from "./AddSystemForm";
 import SystemsList from "./SystemsList";
@@ -8,6 +8,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
 import { selectSystems } from "./SystemsSlice";
+import { Content } from "../../components/Content";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -21,49 +22,60 @@ function Forms() {
     }
 
     return (
-        <div className={styles.fatherDiv}>
-            <Title level={2}>מערכות</Title>
+        <Content>
+            <div className={styles.fatherDiv}>
+                <Title level={2}>מערכות</Title>
 
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row-reverse",
-                    backgroundColor: "",
-                }}
-            >
-                <Form.Item
-                    labelCol={{ span: 24 }}
-                    label="פרופיל משתמש (תפקיד)"
-                    style={{ backgroundColor: "" }}
-                >
-                    <Input size="large"   style={{width:"75%"}} disabled value="Liora Yacob" />
-                </Form.Item>
-                <Paragraph
-                    strong={true}
+                <div
                     style={{
+                        display: "flex",
+                        flexDirection: "row-reverse",
                         backgroundColor: "",
-                        marginRight: "5%",
-                        marginTop: "2%",
-                        fontSize:"15px"
                     }}
                 >
-                    מנועי האוטומציה שלנו זיהו שהמערכות מטה רלוונטיות עבורך והן זמינות
-                    עבורך גם ברשת האחת!
+                    <Form.Item
+                        labelCol={{ span: 24 }}
+                        label="פרופיל משתמש (תפקיד)"
+                        style={{ backgroundColor: "" }}
+                    >
+                        <Input size="large" style={{ width: "75%" }} disabled value="Liora Yacob" />
+                    </Form.Item>
+                    <Paragraph
+                        strong={true}
+                        style={{
+                            backgroundColor: "",
+                            marginRight: "5%",
+                            marginTop: "2%",
+                            fontSize: "15px"
+                        }}
+                    >
+                        מנועי האוטומציה שלנו זיהו שהמערכות מטה רלוונטיות עבורך והן זמינות
+                        עבורך גם ברשת האחת!
                         <br />
                         במידה ויש מערכות נוספות להן תזדקק/י, ניתן להוסיפן מטה
             </Paragraph>
-            </div>
-            <SystemsList systems={systems} />
-            <AddSystemForm systems={systems}/>
+                </div>
+                <br />
+                <SystemsList systems={systems} />
+                <br />
+                <AddSystemForm systems={systems} />
 
-            <Form.Item className={styles.submit}>
-                <Button onClick={finish} shape="round" size="large">
-                    אישור מערכות
+
+
+
+                <Row justify="end" align="bottom" className={styles.tailRow}>
+                    <div>
+                        <Col>
+                            <Button onClick={finish} shape="round" size="large">
+                                אישור מערכות
                     <ArrowLeftOutlined />
-                </Button>
-            </Form.Item>
+                            </Button>
+                        </Col>
+                    </div>
+                </Row>
 
-        </div>
+            </div>
+        </Content>
     );
 }
 

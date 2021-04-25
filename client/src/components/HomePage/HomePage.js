@@ -128,14 +128,6 @@ function HomePage() {
                                 <img src={process.env.PUBLIC_URL + "/img/ask.png"} alt="FAQ" />
                             </Button>
                         </Tooltip>
-                        <br />
-                        <div></div>
-                        <Button shape="circle" onClick={() => window.alert("settingsButton")}>
-                            <img
-                                src={process.env.PUBLIC_URL + "/img/settings.png"}
-                                alt="Settings"
-                            />
-                        </Button>
                     </div>
 
                     <Button htmlType="submit" shape="round" size="large"

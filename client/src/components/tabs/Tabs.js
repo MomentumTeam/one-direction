@@ -2,10 +2,10 @@ import { Tab } from "./Tab";
 import { useLocation } from "react-router-dom";
 
 const tabs = [
-  {
-    id: 6,
-    path: "/faq",
-  },
+  // {
+  //   id: 6,
+  //   path: "/faq",
+  // },
   {
     id: 5,
     path: "/finish",

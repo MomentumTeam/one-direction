@@ -54,7 +54,7 @@ function Faq() {
 
 
                 <div className={styles.faqTitlesDiv}>
-                    <img src={process.env.PUBLIC_URL + "/img/faq/share.png"} />
+                    <img src={process.env.PUBLIC_URL + "/img/faq/shares.png"} />
                     <Text strong={true} className={styles.faqTitles}>תיקיות שיתוף</Text>
                 </div>
 

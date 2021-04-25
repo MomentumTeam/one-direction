@@ -14,7 +14,7 @@ const initialState = {
             rate: 3,
         },
     ],
-    systemsOptions: [{ value: 'Chrome' }, { value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Office' }]
+    systemsOptions: [ { value: 'OutLook' }, { value: 'Photo Shop' }]
 };
 
 

@@ -1,5 +1,5 @@
 .topDiv {
-  height: 400px;
+  height: 40vh;
   /* width:100%; */
   background-image: url(../../images/TopSky.png);
 }
@@ -12,8 +12,8 @@
 }
 
 .bottomDiv {
-  height: 577px;
-  width: 100%;
+  height: 60vh;
+  /* width: 100%; */
   background-image: url(../../images/background.jpg);
   background-repeat: no-repeat;
 }
@@ -28,9 +28,11 @@
 }
 
 .one {
+  /* background-color: #109788; */
   font-size: 6vmin;
   position: absolute;
-  width: 45%;
+  /* width: 45%; */
+  width: 50vw;
   top: 25%;
   right: 25%;
   /* z-index: 1; */
@@ -47,8 +49,8 @@
   position: absolute;
   right: 0%;
   top: 50%;
-  width: 961px;
-  height: 220px;
+  width: 55vw;
+  height: 23vh;
   border-top-left-radius: 100%800px;
   border-bottom-left-radius: 100%800px;
 }
@@ -57,12 +59,12 @@
   /* background-color: ; */
   margin-right: 5%;
   margin-top: 2%;
-  font-size: 30px;
-  color: white;
+  font-size: 0.5vmin;
+  color: gr;
 }
 
 .text {
-  font-size: 18px;
+  font-size: 1.9vmin;
   color: white;
 }
 
@@ -105,9 +107,10 @@
   background-color: #001322;
   position: absolute;
   right: 20%;
-  top: 70%;
-  width: 900px;
-  height: 80px;
+  top: 69%;
+  width: 50vw;
+  /* height: 80px; */
+  height: 9vh;
   border-top-left-radius: 100%800px;
   border-bottom-left-radius: 100%800px;
   border-top-right-radius: 100%800px;
@@ -147,17 +150,51 @@
 .sideNavBarButtonsDiv {
   /* justify-content: space-between; */
   /* position: absolute; */
+  /* bottom: 5%; */
 
-  display: flex;
+  /* display: flex;
   size: 30px;
   flex-direction: column;
-  /* bottom: 5%; */
   float: right;
   margin-top: 400px;
-  margin-right: 50px;
+  margin-right: 50px; */
+
+  position: fixed;
+  border: 1px solid blue;
+  background-color: rgba(255,200,200,0.5);  
+  width: 300px;
+  height: 100px;
+  bottom: 0;
+  /* left: 0; */
+  right: 0;
 }
 
 .button {
   margin-top: 400px;
   margin-left: 150px;
 }
+
+/* @media screen and (max-width: 900px) {
+  body {
+    background-color: olive;
+    color: white;
+  }
+  .tealDiv {
+    width: 500px;
+    height: 150px;
+  }
+  .blackDiv {
+    width: 200px;
+    height: 500px;
+    flex-direction: column;
+
+    padding-left: 40px;
+    right: 20%;
+    top: 69%;
+    border-top-left-radius: 100%800px;
+    border-bottom-left-radius: 100%800px;
+    border-top-right-radius: 100%800px;
+    border-bottom-right-radius: 100%800px;
+
+  }
+} */
