@@ -1,8 +1,9 @@
 import { Row, Col, Input, Form } from "antd";
 import styles from "./PersonalInformation.module.css";
+
 export const SecurityQuestions = () => {
   return (
-    <div>
+    <div style={{marginTop:"4%"}}>
       2 שאלות לאיפוס סיסמה
       <div className={styles.questions}>
         <Row gutter={[24]}>

@@ -1,39 +1,115 @@
-var mysql = require("mysql");
+require("dotenv").config({ path: "../oneDirection.env" });
+const e = require("express");
+const { Connection, Request } = require("tedious");
 
-var config = {
-  host: "od-db.database.windows.net",
-  user: "barak",
-  password: "Aa123456789!",
-  database: "OneDirection",
-
-  //   port: 3306,
-  //   ssl: true,
+const config = {
+  authentication: {
+    options: {
+      userName: process.env.SQL_USER,
+      password: process.env.SQL_PASSWORD
+    },
+    type: "default"
+  },
+  server: process.env.SQL_HOST,
+  options: {
+    database: process.env.SQL_DB,
+    encrypt: true
+  }
 };
 
-const conn = new mysql.createConnection(config);
 
-conn.connect(function (err) {
+const connection = new Connection(config);
+connection.connect();
+
+connection.on("connect", err => {
   if (err) {
-    console.log("!!! Cannot connect !!! Error:");
-    console.log("err", err);
-    throw err;
+    console.error("err: " + err.message);
   } else {
-    console.log("Connection established.");
-    readData();
+    console.log("Connected Successfully");
   }
 });
 
-function readData() {
-  conn.query("SELECT * FROM Users", function (err, results, fields) {
-    if (err) throw err;
-    else console.log("Selected " + results.length + " row(s).");
-    for (i = 0; i < results.length; i++) {
-      console.log("Row: " + JSON.stringify(results[i]));
-    }
-    console.log("Done.");
-  });
-  conn.end(function (err) {
-    if (err) throw err;
-    else console.log("Closing connection.");
+exports.getUserData = (userID) => {
+  return new Promise((resolve, reject) => {
+    getUserReq(userID, function (error, results) {
+      if (error) {
+        reject(error);
+      }
+      results[0].Shares = results[0].Shares.split(',');
+      results[0].Ui_Properties = JSON.parse(results[0].Ui_Properties);
+      resolve(results[0]);
+    });
   });
 }
+
+
+
+function getUserReq(userID, callback) {
+  console.log('userID', userID);
+  console.log("Reading rows from the Table...");
+  let results = [];
+
+  const request = new Request(
+    `SELECT Users3.*, Rank.Rank, Computer_Site.Computer_Site, User_Type.User_Type, User_Profile.Profile_Name_HEB, Original_Domain.Original_Domain, requestsStatus.Biopass_Taken FROM [dbo].[Users3]
+    INNER JOIN [dbo].[Rank] AS Rank ON Rank.Rank_ID=Users3.Rank_ID
+    INNER JOIN [dbo].[Computer_Site] AS Computer_Site ON Computer_Site.Computer_Site_ID=Users3.Computer_Site_ID
+    INNER JOIN [dbo].[User_Type] AS User_Type ON User_Type.User_Type_ID=Users3.User_Type_ID
+    INNER JOIN [dbo].[User_Profile] AS User_Profile ON User_Profile.User_Profile_ID=Users3.User_Profile_ID
+    INNER JOIN [dbo].[Original_Domain] AS Original_Domain ON Original_Domain.Original_Domain_ID=Users3.Original_Domain_ID
+	  INNER JOIN [dbo].[requestsStatus] AS requestsStatus ON requestsStatus.Transfer_ID=Users3.Transfer_ID
+    WHERE Users3.Transfer_ID='${userID}'
+    FOR JSON PATH;`,
+    function (error) {
+      if (error) {
+        console.error("err: " + error.message);
+        return callback(error, null);
+      }
+      callback(null, results);
+    }
+  );
+
+  request.on("row", rowObject => {
+    results.push(JSON.parse(rowObject[0].value)[0]);
+  });
+  connection.execSql(request);
+}
+
+exports.updateUserData = (userID, changes) => {
+  return new Promise((resolve, reject) => {
+    updateUserReq(userID, changes, function (error, result) {
+      if (error) {
+        resolve({ severity: 'error', message: error.message });
+      }
+      resolve(result);
+    });
+  });
+}
+
+
+function updateUserReq(userID, changes, callback) {
+  let changesString = "";
+
+  Object.keys(changes).forEach(function (key, i) {
+    console.log('key', key)
+    // if (typeof changes[key] === 'number' || changes[key][1] === "N") {
+      changesString =changesString+ `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `
+    // }
+  });
+
+  const request = new Request(
+    `UPDATE [dbo].[Users3]
+    SET ${changesString}
+    WHERE Transfer_ID='${userID}';`,
+
+    function (error) {
+      if (error) {
+        console.error("err: " + error.message);
+        return callback(error, null);
+      }
+      callback(null, { severity: 'success', message: "!הפרטים עודכנו בהצלחה" });
+    }
+  );
+
+  connection.execSql(request);
+}
+

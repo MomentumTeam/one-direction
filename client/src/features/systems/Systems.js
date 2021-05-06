@@ -6,19 +6,39 @@ import AddSystemForm from "./AddSystemForm";
 import SystemsList from "./SystemsList";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
-import { useSelector } from "react-redux";
-import { selectSystems } from "./SystemsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectSystems, updateSystems } from "./SystemsSlice";
 import { Content } from "../../components/Content";
+import { updateUser, setChanges } from "../user/userSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
 function Forms() {
     let history = useHistory();
+    let dispatch = useDispatch();
     const systems = useSelector(selectSystems);
 
-    const finish = (e) => {
-        console.log('Final Systems List: ', systems);
-        history.push("/fingerPrint");
+    const finish = async(e) => {
+        try {
+            console.log('Final Systems List: ', systems);
+            const namesArray = systems.map(system => system.systemName);
+            dispatch(setChanges({ Application: namesArray.toString() }));
+
+            const response = await dispatch(updateUser());
+            console.log('response folders', response)
+
+            if (response.payload.severity === "success") {
+                console.log('success folders');
+                dispatch(updateSystems(systems));
+                history.push("/fingerPrint");
+            }
+            else {
+                console.log('error', response.payload.message);
+            }
+        }
+        catch (err) {
+            console.log('err', err);
+        }
     }
 
     return (

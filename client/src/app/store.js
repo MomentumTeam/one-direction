@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     systems: SystemsReducer,
     folders: FoldersSlice,
-    user: userSlice
+    user: userSlice,
   },
 });

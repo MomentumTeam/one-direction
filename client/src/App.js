@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect } from "react";
 import { AppRouter } from "./components/Router";
 import { Progress } from "./components/progress/Progress";
 import { ConfigProvider } from "antd";
@@ -14,15 +14,15 @@ import { Tabs } from "./components/tabs/Tabs";
 import { Header } from "./components/Header";
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./components/HomePage/HomePage";
-
-
 import { useSelector, useDispatch } from "react-redux";
-import { selectLoading, getUser } from "./features/user/userSlice";
+import { selectLoading, selectUserObj, getUser } from "./features/user/userSlice";
+import { setFolders } from "./features/sharingFolders/SharingFoldersSlice";
+import { setSystems } from "./features/systems/SystemsSlice";
 
 function App() {
-
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
+  const user = useSelector(selectUserObj);
 
   useEffect(() => {
     dispatch(getUser());
@@ -33,6 +33,8 @@ function App() {
     return <div>Waiting for user from DB</div>;
   }
   else {
+    dispatch(setFolders(user.Shares));
+    dispatch(setSystems(user.Application));
 
     return (
       <ConfigProvider direction="rtl">

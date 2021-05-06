@@ -7,9 +7,10 @@ import {
   MinusCircleOutlined,
 } from "@ant-design/icons";
 import { Form, Input, Button, Col, Row, Space } from "antd";
-import { selectFolders, AddFolders, RemoveFolder } from "./SharingFoldersSlice";
+import { selectFolders, update, RemoveFolder } from "./SharingFoldersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Content } from "../../components/Content";
+import { updateUser, setChanges } from "../user/userSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -19,17 +20,32 @@ function SharingFolders() {
   const dispatch = useDispatch();
   const folders = useSelector(selectFolders);
 
-  const onFinish = (values) => {
-    console.log('values', values.additionalSharingFolders)
-    console.log('onFinish');
-    if (values !== null) {
-      console.log('null');
-      dispatch(AddFolders(values.additionalSharingFolders));
-    }
-    console.log('history')
-    history.push("/systems");
+  const onFinish = async(values) => {
+    try {
+      if (values.additionalSharingFolders !== undefined) {
+        let additionalFoldersPath = values.additionalSharingFolders.map(obj => obj.folderPath);
+        const joinedFoldersArray = folders.concat(additionalFoldersPath);
+        dispatch(setChanges({ Shares: joinedFoldersArray.toString() }));
 
+        const response = await dispatch(updateUser());
+        console.log('response folders', response)
+
+        if (response.payload.severity === "success") {
+          console.log('success folders');
+          dispatch(update(joinedFoldersArray));
+          history.push("/systems");
+        }
+        else {
+          console.log('error', response.payload.message);
+        }
+      }
+    }
+    catch (err) {
+      console.log('err', err);
+    }
   };
+
+
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

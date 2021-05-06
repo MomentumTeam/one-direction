@@ -19,6 +19,7 @@
     "passport": "^0.4.1",
     "passport-shraga": "^1.4.0",
     "path": "^0.12.7",
+    "sql": "^0.78.0",
     "tedious": "^11.0.7"
   }
 }

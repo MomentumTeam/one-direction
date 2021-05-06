@@ -1,0 +1,29 @@
+{
+    "stage" : [
+        {
+            "id": 0,
+            "page": "home"
+        },
+        {
+            "id": 1,
+            "page": "personal"
+        },
+        {
+            "id": 2,
+            "page": "folders"
+        },
+        {
+            "id": 3,
+            "page": "systems"
+        },
+        {
+            "id": 4,
+            "page": "finger"
+        },
+        {
+            "id": 5,
+            "page": "finish"
+        }
+    ],
+    "labels":["------","טלפון",  "מייל"]
+}

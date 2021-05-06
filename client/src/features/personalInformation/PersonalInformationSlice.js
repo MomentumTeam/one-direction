@@ -3,23 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const personalInformationSlice = createSlice({
   name: "PersonalInformation",
   initialState: {
-    user: {
-      heName: "",
-      enName: "",
-      displayName: "",
-      phoneNumber: 0000000000,
-      computerName: "",
-      personalNumber: 0,
-    },
+    chnages: {},
   },
   reducers: {
-    update: (state, action) => {
-      state[action.payload.field] = action.payload;
+    setChanges: (state, action) => {
+      console.log('action pi', action.payload)
+      state.chnages = action.payload;
     },
   },
 });
 
-export const { update } = personalInformationSlice.actions;
+export const { setChanges } = personalInformationSlice.actions;
 
 export const selectPersonalInformation = (state) => state.PersonalInformation;
 
