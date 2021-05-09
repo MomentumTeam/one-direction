@@ -1,10 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    systems: [
-    ],
-    systemsOptions: [{ value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Photo Shop' }]
+    systems: [],
+    systemsOptions: [{ value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Lync' }, { value: 'Power Point' }, { value: 'Word' }, { value: 'Fuck You' }]
 };
 
 
@@ -14,33 +13,26 @@ export const SystemsSlice = createSlice({
     reducers: {
         setSystems: (state, action) => {
             if (action.payload) {
-                const systems = action.payload.split(',');
-                const res = [];
-                systems.forEach(element => {
-                    res.push({ systemName: element });
+                const systems = action.payload.split(',').map(function (item) {
+                    return item.trim();
                 });
-                state.systems = res;
-                // const exist = [];
-                // systems.forEach(element => {
-                //     exist.push({ value: element })
+                const systemsObj = [];
+                systems.map(name => {
+                    systemsObj.push({ systemName: name });
+                });
 
-                // });    
-                // console.log('exist', exist)
-                // console.log("f", exist.concat(state.systemsOptions))
-                // state.systemsOptions = exist.concat(state.systemsOptions);
+                state.systems = systemsObj; //set systems
 
+                let systemsOptions = current(state).systemsOptions;
+                systemsOptions = systemsOptions.filter((option) => {
+                    const existsInSystems = systems.includes(option.value);
+                    return !existsInSystems;
+                });
+
+                state.systemsOptions = systemsOptions;  //filter systems options
             }
-
-            // const uniqueOptions = Array.from(new Set(state.systemsOptions.map(a => a.value)))
-            //     .map(value => {
-            //         console.log('value', value)
-            //         return state.systemsOptions.find(a => a.value === value)
-            //     })
-            // console.log("uniqueOptions", uniqueOptions);
-            // state.systemsOptions = uniqueOptions;
         },
         updateSystems: (state, action) => {
-            console.log('actionnnnnnnnnnnnnnnnnnnnnnnn', action.payload)
             state.systems = action.payload;
         },
         AddToExistingList: (state, action) => {

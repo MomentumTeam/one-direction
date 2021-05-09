@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    folders: []
+    folders: []    //array of strings
 };
 
 
