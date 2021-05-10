@@ -11,14 +11,14 @@ import { selectSystems, updateSystems } from "./SystemsSlice";
 import { Content } from "../../components/Content";
 import { updateUser, setChanges } from "../user/userSlice";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph, } = Typography;
 
-function Forms() {
+function Forms({ user }) {
     let history = useHistory();
     let dispatch = useDispatch();
     const systems = useSelector(selectSystems);
 
-    const finish = async(e) => {
+    const finish = async (e) => {
         try {
             console.log('Final Systems List: ', systems);
             const namesArray = systems.map(system => system.systemName);
@@ -58,7 +58,7 @@ function Forms() {
                         label="פרופיל משתמש (תפקיד)"
                         style={{ backgroundColor: "" }}
                     >
-                        <Input size="large" style={{ width: "75%" }} disabled value="Liora Yacob" />
+                        <Input size="large" style={{ width: "75%" }} disabled value={user.Profile_Name_HEB} />
                     </Form.Item>
                     <Paragraph
                         strong={true}
@@ -86,7 +86,7 @@ function Forms() {
                 <Row justify="end" align="bottom" className={styles.tailRow}>
                     <div>
                         <Col>
-                            <Button onClick={finish} shape="round" size="large">
+                            <Button htmlType="submit" onClick={finish} shape="round" size="large">
                                 אישור מערכות
                     <ArrowLeftOutlined />
                             </Button>

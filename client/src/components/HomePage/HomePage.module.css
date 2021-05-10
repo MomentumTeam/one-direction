@@ -59,7 +59,7 @@
   /* background-color: ; */
   margin-right: 5%;
   margin-top: 2%;
-  font-size: 0.5vmin;
+  font-size: 3.5vmin;
   color: gr;
 }
 
@@ -91,13 +91,6 @@
   transform: translateY(-30%);
 }
 
-.paragraph {
-  /* backgroundColor: ; */
-  margin-right: 5%;
-  margin-top: 2%;
-  font-size: 30px;
-  color: white;
-}
 
 .blackDiv {
   display: flex;
@@ -135,6 +128,8 @@
 
 .tab {
   /* background-color: white; */
+  position: relative;
+  left:0%;
   border: none;
   color: white;
   padding: 20px 15px;
@@ -143,30 +138,22 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 100% 100% 0% 0%;
-  margin: 10px 20px 0px 0px;
+  border-radius: 100% 100% 0% 0%;  /*rounded */
+  margin: 10px 20px 0px 0px;  
 }
 
 .sideNavBarButtonsDiv {
-  /* justify-content: space-between; */
-  /* position: absolute; */
-  /* bottom: 5%; */
-
-  /* display: flex;
-  size: 30px;
-  flex-direction: column;
-  float: right;
-  margin-top: 400px;
-  margin-right: 50px; */
-
+  /* 
   position: fixed;
   border: 1px solid blue;
   background-color: rgba(255,200,200,0.5);  
   width: 300px;
   height: 100px;
   bottom: 0;
+
+  right: 0;   */
+
   /* left: 0; */
-  right: 0;
 }
 
 .button {
@@ -198,3 +185,24 @@
 
   }
 } */
+
+
+@media screen and (max-width: 900px) {
+  /* .paragraph {
+    display: none;
+  } */
+  .blackDiv {
+    /* display: none; */
+    width: 200px;
+    height: 100px;
+  }
+  .topDiv{
+    display: block;
+  }
+  .topDiv {
+    background-color: red;
+  }
+  .bottomDiv {
+    background-color: yellow;
+  }
+}

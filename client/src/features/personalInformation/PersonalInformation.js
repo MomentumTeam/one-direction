@@ -8,14 +8,13 @@ import { Avatar, Image, Upload } from "antd";
 import styles from "./PersonalInformation.module.css";
 import { EditAvatar } from "./EditAvatar";
 import Title from "antd/lib/typography/Title";
-import { updateUser, setChanges, update, selectUserObj } from "../user/userSlice";
+import { updateUser, setChanges, update, } from "../user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 
-export const PersonalInformationForm = () => {
+export const PersonalInformationForm = ({user}) => {
   let history = useHistory();
   let dispatch = useDispatch();
-  const user = useSelector(selectUserObj);
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
@@ -72,7 +71,7 @@ return (
           <Col>
             <Title level={2}>הפרטים האישיים שלי</Title>
           </Col>
-          <EditAvatar />
+          {/* <EditAvatar /> */}
         </Row>
         <EditUserDetails user={user} />
         <SecurityQuestions />

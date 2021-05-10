@@ -89,11 +89,12 @@ exports.updateUserData = (userID, changes) => {
 function updateUserReq(userID, changes, callback) {
   let changesString = "";
 
+  if (changes["Ui_Properties"]) {
+    changes["Ui_Properties"] = JSON.stringify(changes["Ui_Properties"]);
+  }
+
   Object.keys(changes).forEach(function (key, i) {
-    console.log('key', key)
-    // if (typeof changes[key] === 'number' || changes[key][1] === "N") {
-      changesString =changesString+ `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `
-    // }
+    changesString = changesString + `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `;
   });
 
   const request = new Request(

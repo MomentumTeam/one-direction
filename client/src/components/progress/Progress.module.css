@@ -1,5 +1,5 @@
 .progress {
-  width: 25%;
+  width: 300px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -49,3 +49,11 @@
     display: none;
   }
 } */
+
+@media screen and (max-width: 600px) {
+  .progress {
+    /* display: none; */
+    width: 200px;
+  }
+  
+}

@@ -1,10 +1,13 @@
 import { Avatar, Image, Button, Tooltip, Typography } from "antd";
 import styles from "./SideNavBar.module.css";
+import { useHistory } from 'react-router-dom';
 
 const { Text } = Typography;
 
 
 function SideNavBar() {
+  let history = useHistory();
+
   return (
     <div className={styles.fatherDiv}>
       <Avatar
@@ -24,7 +27,7 @@ function SideNavBar() {
               </p>
           }
         >
-          <Button shape="circle" href="/faq" >
+          <Button shape="circle" onClick={() => history.push("/faq")} >
             <img src={process.env.PUBLIC_URL + "/img/ask.png"} alt="FAQ" />
           </Button>
         </Tooltip>

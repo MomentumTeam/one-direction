@@ -57,12 +57,13 @@ function AddSystemForm({ systems }) {
         }
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        form.validateFields(['usage']);
-        form.validateFields(['systemName']);
+    //     form.validateFields(['usage']);
+    //     form.validateFields(['systemName']);
 
-    }, [usage, systemName]);
+    // }, [usage, systemName]);
+
 
     const onChangeRate = (rateNumber) => {
         console.log("rateNumber:", rateNumber);
@@ -118,7 +119,6 @@ function AddSystemForm({ systems }) {
                             <Form.Item
                                 label="למה משמש?"
                                 rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
-                                required
                                 name="usage"
 
                             >
@@ -141,7 +141,8 @@ function AddSystemForm({ systems }) {
                                     value={rate}
                                     className={styles.rateContainer}
                                     style={{
-                                        fontSize: "250%"
+                                        fontSize: "250%",
+                                        marginTop:"-5%"
                                     }}
                                 />
                             </Form.Item>
@@ -150,6 +151,7 @@ function AddSystemForm({ systems }) {
                         <Col className="gutter-row" span={6}>
                             <Form.Item className={styles.verticallyCentered}>
                                 <Button
+                                    htmlType="submit"
                                     className={styles.addButton}
                                     shape="circle"
                                     onClick={add}

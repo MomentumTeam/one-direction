@@ -34,36 +34,25 @@ export const userSlice = createSlice({
             state.userObj = action.payload;
         },
         update: (state, action) => {
-            console.log('update action.payload', action.payload)
             Object.keys(action.payload).forEach((key) => {
-                console.log('key', key)
                 if (key === "stage" || key === "communicationType") {
-                    console.log("wowwwwwwwwww");
                     state.userObj.Ui_Properties[key] = action.payload[key];
                 }
                 else {
-                    // console.log("key eeeeeeeeeeeeeee",key);
-
                     state.userObj[key] = action.payload[key];
-
                 }
             })
-            console.log('state.userObj', typeof state.userObj.Ui_Properties)
-
         },
-
         setChanges: (state, action) => {
-            // console.log('setChanges action.payload', action.payload)
             let changeInCommunication=false;
             if (("communicationType" in action.payload)) { 
                 changeInCommunication = true;
             }
 
-            const UiPropertiesString = { stage: action.payload.stage, communicationType: changeInCommunication ? action.payload.communicationType : state.userObj.Ui_Properties["communicationType"] };
-            action.payload["Ui_Properties"] = JSON.stringify(UiPropertiesString);
+            const UiPropertiesObj = { stage: action.payload.stage, communicationType: changeInCommunication ? action.payload.communicationType : state.userObj.Ui_Properties["communicationType"] };
+            action.payload["Ui_Properties"] = UiPropertiesObj;
             delete action.payload.stage;
             delete action.payload.communicationType;
-
             state.changes = action.payload;
         },
     },

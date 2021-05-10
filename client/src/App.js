@@ -10,7 +10,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { Tabs } from "./components/tabs/Tabs";
 import { Header } from "./components/Header";
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./components/HomePage/HomePage";

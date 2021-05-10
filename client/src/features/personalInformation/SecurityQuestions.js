@@ -20,9 +20,7 @@ export const SecurityQuestions = () => {
           <Col span={12}>
             <Form.Item
               name="question1"
-              rules={[
-                { required: true, message: "Please input your username!" },
-              ]}
+              rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
             >
               <Input size="large" />
             </Form.Item>
@@ -41,9 +39,7 @@ export const SecurityQuestions = () => {
           <Col span={12}>
             <Form.Item
               name="question2"
-              rules={[
-                { required: true, message: "Please input your username!" },
-              ]}
+              rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
             >
               <Input size="large" />
             </Form.Item>

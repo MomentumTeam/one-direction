@@ -6,6 +6,8 @@
 .collapse{
     margin: 3%;
     border: none;
+    overflow: auto;
+
 }
 
 .faqTitlesDiv {

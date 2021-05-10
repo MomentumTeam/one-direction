@@ -95,6 +95,7 @@ function SharingFolders() {
                   }} />
                 </Space>
               ))}
+              
               <Form.List name="additionalSharingFolders">
                 {(fields, { add, remove }) => (
                   <>

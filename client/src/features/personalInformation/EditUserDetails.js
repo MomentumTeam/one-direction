@@ -6,7 +6,7 @@ import CONFIG from '../../config.json';
 const { Option } = Select;
 
 export const EditUserDetails = ({user}) => {
-  const [value, setValue] = useState(); //station
+  const [value, setValue] = useState(); //station-yes or no
   const [typeId, setTypeId] = useState(user.Ui_Properties.communicationType); //communication - type
   const [label, setLabel] = useState(CONFIG.labels[typeId]); //communication -label
 
@@ -43,8 +43,8 @@ export const EditUserDetails = ({user}) => {
           <Form.Item
             label="שם מלא באנגלית"
             name="username"
-          // rules={[{ required: true, message: "Please input your username!" }]}
-          >
+            rules={[{ required: true, message: "אנא מלא שדה זה!" }]}
+            >
             <Input size="large" defaultValue={user.First_Name_ENG+" "+user.Last_Name_ENG} />
           </Form.Item>
         </Col>
