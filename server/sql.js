@@ -13,7 +13,9 @@ const config = {
   server: process.env.SQL_HOST,
   options: {
     database: process.env.SQL_DB,
-    encrypt: true
+    encrypt: true,
+    keepAlive: true,
+
   }
 };
 
@@ -35,8 +37,15 @@ exports.getUserData = (userID) => {
       if (error) {
         reject(error);
       }
-      results[0].Shares = results[0].Shares.split(',');
       results[0].Ui_Properties = JSON.parse(results[0].Ui_Properties);
+
+      if (results[0].Shares === "") {   //empty string means no folders
+        results[0].Shares = [];
+      }
+      else {
+        results[0].Shares = results[0].Shares.split(',');
+      }
+
       resolve(results[0]);
     });
   });
@@ -87,6 +96,7 @@ exports.updateUserData = (userID, changes) => {
 
 
 function updateUserReq(userID, changes, callback) {
+  console.log('changes', changes)
   let changesString = "";
 
   if (changes["Ui_Properties"]) {
@@ -95,8 +105,9 @@ function updateUserReq(userID, changes, callback) {
 
   Object.keys(changes).forEach(function (key, i) {
     changesString = changesString + `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `;
-  });
 
+  });
+  console.log('changesString', changesString)
   const request = new Request(
     `UPDATE [dbo].[Users3]
     SET ${changesString}
