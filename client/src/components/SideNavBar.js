@@ -1,9 +1,14 @@
 import { Avatar, Image, Button, Tooltip, Typography } from "antd";
 import "../App.css";
 import { Content } from "../components/Content";
+import { useSelector, } from "react-redux";
+import { selectUserObj } from "../features/user/userSlice";
+
 const { Text } = Typography;
 
 function SideNavBar() {
+  const user=useSelector(selectUserObj);
+  
   return (
     <div style={{ marginTop: "30%" }}>
       <Content>
@@ -14,7 +19,7 @@ function SideNavBar() {
             src={<Image src={process.env.PUBLIC_URL + "/img/kermit.jpg"} />}
           />
           <Text style={{ marginRight: "20%" }} strong={true}>
-            אלי <br /> קופטר
+            {user.First_Name_HEB} <br /> {user.Last_Name_HEB}
           </Text>
         </div>
 

@@ -1,11 +1,33 @@
 {
   "stage": [
-    "/",
     "/personalInformation",
     "/folders",
     "/systems",
     "/finger",
     "/finish"
   ],
-  "labels": ["------", "טלפון", "מייל"]
+  "labels": ["------", "טלפון", "מייל"],
+
+  "tabs": [
+    {
+      "id": 1,
+      "path": "/personalInformation"
+    },
+    {
+      "id": 2,
+      "path": "/folders"
+    },
+      {
+      "id": 3,
+      "path": "/systems"
+    },
+    {
+      "id": 4,
+      "path": "/fingerPrint"
+    },
+    {
+      "id": 5,
+      "path": "/finish"
+    }
+  ]
 }

@@ -6,40 +6,24 @@ import {
     ArrowLeftOutlined,
 } from "@ant-design/icons";
 import styles from "./HomePage.module.css";
+import { useSelector, } from "react-redux";
+import { selectUserObj } from "../../features/user/userSlice";
+import CONFIG from "../../config.json";
 
 const { Title, Paragraph, Text } = Typography;
 
 
-const tabs = [
-    {
-        id: 1,
-        path: "/",
-    },
-    {
-        id: 2,
-        path: "/folders",
-    },
-    {
-        id: 3,
-        path: "/systems",
-    },
-    {
-        id: 4,
-        path: "/fingerPrint",
-    },
-    {
-        id: 5,
-        path: "/finish",
-    },
-];
-
 
 function HomePage() {
-    const status = "/folders";
+    let status=1;
     let history = useHistory();
+    const user = useSelector(selectUserObj);
+    if (user.Ui_Properties !== undefined) {
+        status = CONFIG.stage[user.Ui_Properties.stage-1];
+        console.log('status lalalalalala', status)
+    }
 
     const getIcon = (tab) => {
-        // console.log('str', str)
         console.log('tab', tab.id);
 
         if (tab.path === status) {
@@ -84,7 +68,8 @@ function HomePage() {
                     />
 
                     <Paragraph className={styles.paragraph}>
-                        <strong>היי אלי קופטר</strong>
+                        <strong>היי             {user.First_Name_HEB} {user.Last_Name_HEB}
+                        </strong>
                         <br />
 שמחים שנבחרת להצטרף אלינו ל-                             <strong>one</strong>aman
 
@@ -98,10 +83,10 @@ function HomePage() {
                 </div>
 
                 <div className={styles.blackDiv}>
-                    <Title level={3} className={styles.status} style={{ color: "white",}}>הסטטוס שלי בתהליך</Title>
+                    <Title level={3} className={styles.status} style={{ color: "white", }}>הסטטוס שלי בתהליך </Title>
 
                     {/* <div> */}
-                    {tabs.map((tab) => (
+                    {CONFIG.tabs.map((tab) => (
                         tab.path === status ?
                             <div className={styles.tab} style={{ backgroundColor: "white" }}>
                                 {getIcon(tab)}
