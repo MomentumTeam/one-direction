@@ -3,11 +3,10 @@
     "/personalInformation",
     "/folders",
     "/systems",
-    "/finger",
+    "/fingerPrint",
     "/finish"
   ],
   "labels": ["------", "טלפון", "מייל"],
-
   "tabs": [
     {
       "id": 1,

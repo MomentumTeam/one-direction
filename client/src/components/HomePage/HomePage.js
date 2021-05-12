@@ -15,16 +15,17 @@ const { Title, Paragraph, Text } = Typography;
 
 
 function HomePage() {
-    let status=1;
+    let status=1;  //default
     let history = useHistory();
     const user = useSelector(selectUserObj);
+
     if (user.Ui_Properties !== undefined) {
         status = CONFIG.stage[user.Ui_Properties.stage-1];
-        console.log('status lalalalalala', status)
+        console.log('user.Ui_Properties.stage-1', user.Ui_Properties.stage-1)
+        console.log('status', status)
     }
 
     const getIcon = (tab) => {
-        console.log('tab', tab.id);
 
         if (tab.path === status) {
 

@@ -23,16 +23,13 @@ function AddSystemForm({ systems }) {
 
     const addSystem = (e) => {
 
-        const imgName = systemName.split(" ").join("");
-        console.log("imgName: ", imgName);
+        // const imgName = systemName.split(" ").join("");
 
         const toAdd = {
             systemName: systemName,
             usage: usage,
             rate: rate,
         };
-
-        console.log("toAdd: ", toAdd);
 
         dispatch(AddToExistingList(toAdd));
 
@@ -48,9 +45,6 @@ function AddSystemForm({ systems }) {
     };
 
     const add = (e) => {
-        console.log('systemName', systemName)
-        console.log('usage', usage)
-
         if (usage !== "" && systemName !== "") {
 
             addSystem(e);
@@ -66,7 +60,6 @@ function AddSystemForm({ systems }) {
 
 
     const onChangeRate = (rateNumber) => {
-        console.log("rateNumber:", rateNumber);
         setRate(rateNumber);
     };
 

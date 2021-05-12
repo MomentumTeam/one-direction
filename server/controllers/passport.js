@@ -15,6 +15,7 @@ const config = {
   useADFS: true,
   useEnrichId: true,
 };
+
 passport.use(
   new shraga.Strategy(config, (profile, done) => {
     if (profile && profile.RelayState) {

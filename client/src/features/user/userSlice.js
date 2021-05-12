@@ -8,7 +8,7 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
     return user;
 });
 
-export const updateUser = createAsyncThunk("user/updateUser", async (_, { getState }) => {
+export const updateUserServer = createAsyncThunk("user/updateUser", async (_, { getState }) => {
     try {
         const { changes } = getState().user;
         const res = await updateUserInServer(changes);
@@ -33,27 +33,33 @@ export const userSlice = createSlice({
         set: (state, action) => {
             state.userObj = action.payload;
         },
-        update: (state, action) => {
+        updateUserObj: (state, action) => {
             Object.keys(action.payload).forEach((key) => {
-                if (key === "stage" || key === "communicationType") {
-                    state.userObj.Ui_Properties[key] = action.payload[key];
+                if (key === "Ui_Properties") {
+                    state.userObj[key].communicationType = action.payload[key].communicationType;
                 }
                 else {
                     state.userObj[key] = action.payload[key];
                 }
             })
         },
+        updateStage: (state, action) => {
+            console.log('updateStage', action.payload);
+            state.userObj.Ui_Properties["stage"] = action.payload > state.userObj.Ui_Properties["stage"] ? action.payload : state.userObj.Ui_Properties["stage"];
+        },
         setChanges: (state, action) => {
-            let changeInCommunication=false;
-            if (("communicationType" in action.payload)) { 
+            let changes = action.payload;
+            let changeInCommunication = false;
+
+            if (("communicationType" in changes)) {
                 changeInCommunication = true;
             }
 
-            const UiPropertiesObj = { stage: action.payload.stage, communicationType: changeInCommunication ? action.payload.communicationType : state.userObj.Ui_Properties["communicationType"] };
-            action.payload["Ui_Properties"] = UiPropertiesObj;
-            delete action.payload.stage;
-            delete action.payload.communicationType;
-            state.changes = action.payload;
+            const UiPropertiesObj = { stage: changes.stage > state.userObj.Ui_Properties["stage"] ? changes.stage : state.userObj.Ui_Properties["stage"], communicationType: changeInCommunication ? changes.communicationType : state.userObj.Ui_Properties["communicationType"] };
+            changes["Ui_Properties"] = UiPropertiesObj;
+            delete changes.stage;
+            delete changes.communicationType;
+            state.changes = changes;
         },
     },
 
@@ -71,7 +77,7 @@ export const userSlice = createSlice({
     }
 });
 
-export const { set, setChanges, update } = userSlice.actions;
+export const { set, setChanges, updateUserObj, updateStage } = userSlice.actions;
 
 export const selectUser = (state) => state.user;
 export const selectUserObj = (state) => state.user.userObj;

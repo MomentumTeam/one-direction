@@ -9,27 +9,25 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSystems, updateSystems } from "./SystemsSlice";
 import { Content } from "../../components/Content";
-import { updateUser, setChanges } from "../user/userSlice";
+import { updateUserServer, setChanges, updateStage ,selectUserObj } from "../user/userSlice";
 
 const { Title, Paragraph, } = Typography;
 
-function Forms({ user }) {
+function Systems({user}) {
     let history = useHistory();
     let dispatch = useDispatch();
     const systems = useSelector(selectSystems);
 
     const finish = async (e) => {
         try {
-            console.log('Final Systems List: ', systems);
             const namesArray = systems.map(system => system.systemName);
-            dispatch(setChanges({ Application: namesArray.toString() }));
+            dispatch(setChanges({ Application: namesArray.toString(), stage: 4 }));
 
-            const response = await dispatch(updateUser());
-            console.log('response folders', response)
+            const response = await dispatch(updateUserServer());
 
             if (response.payload.severity === "success") {
-                console.log('success folders');
                 dispatch(updateSystems(systems));
+                dispatch(updateStage(4));
                 history.push("/fingerPrint");
             }
             else {
@@ -99,4 +97,4 @@ function Forms({ user }) {
     );
 }
 
-export default Forms;
+export default Systems;

@@ -5,15 +5,31 @@ import { Content } from "../Content";
 import { OperationTime } from "./OperationTime";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import styles from "./FingerPrint.module.css";
-
+import { updateStage,setChanges, updateUserServer} from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 
 export const FingerPrint = () => {
   let history = useHistory();
+  const dispatch = useDispatch();
 
-  const finish = (e) => {
-    history.push("/finish");
-  }
+  const finish = async(e) => {
+    try {
+      dispatch(setChanges({ stage: 5 })); //update changes for server updateUser function
+      const response = await dispatch(updateUserServer());
+
+      if (response.payload.severity === "success") {
+        dispatch(updateStage(5));   //update stage in userSlice
+        history.push("/finish");
+      }
+      else {
+        console.log('error', response.message);
+      }
+    }
+    catch (err) {
+      console.log('err', err);
+    }
+  };
 
   return (
     <Content>

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Typography } from "antd";
 import styles from "./SharingFolders.module.css";
@@ -10,7 +11,7 @@ import { Form, Input, Button, Col, Row, Space } from "antd";
 import { selectFolders, update, RemoveFolder } from "./SharingFoldersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Content } from "../../components/Content";
-import { updateUser, setChanges } from "../user/userSlice";
+import { updateUserServer, setChanges, updateStage } from "../user/userSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -18,34 +19,34 @@ function SharingFolders() {
   let history = useHistory();
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const folders = useSelector(selectFolders);
+  let folders = useSelector(selectFolders);
 
-  const onFinish = async(values) => {
+  const onFinish = async (values) => {
     try {
+      let joinedFoldersArray = folders;
+
       if (values.additionalSharingFolders !== undefined) {
         let additionalFoldersPath = values.additionalSharingFolders.map(obj => obj.folderPath);
-        const joinedFoldersArray = folders.concat(additionalFoldersPath);
-        dispatch(setChanges({ Shares: joinedFoldersArray.toString() }));
+        joinedFoldersArray = joinedFoldersArray.concat(additionalFoldersPath);
+      }
 
-        const response = await dispatch(updateUser());
-        console.log('response folders', response)
+      dispatch(setChanges({ Shares: joinedFoldersArray.toString(), stage: 3 }));
 
-        if (response.payload.severity === "success") {
-          console.log('success folders');
-          dispatch(update(joinedFoldersArray));
-          history.push("/systems");
-        }
-        else {
-          console.log('error', response.payload.message);
-        }
+      const response = await dispatch(updateUserServer());
+
+      if (response.payload.severity === "success") {
+        dispatch(update(joinedFoldersArray));
+        dispatch(updateStage(3));
+        history.push("/systems");
+      }
+      else {
+        console.log('error', response.payload.message);
       }
     }
     catch (err) {
       console.log('err', err);
     }
   };
-
-
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -81,7 +82,7 @@ function SharingFolders() {
             <Col span={24} className={styles.tile} style={{ textAlign: "center" }}>
 
 
-              {folders.map((folder) => (
+              {folders!==undefined ? folders.map((folder) => (
                 <Space key={folders.indexOf(folder)} align="center ">
                   <Form.Item label={["ניתוב תיקייה ", folders.indexOf(folder) + 1]} >
                     <Input
@@ -94,8 +95,8 @@ function SharingFolders() {
                     dispatch(RemoveFolder(folder));
                   }} />
                 </Space>
-              ))}
-              
+              )) : null}
+
               <Form.List name="additionalSharingFolders">
                 {(fields, { add, remove }) => (
                   <>

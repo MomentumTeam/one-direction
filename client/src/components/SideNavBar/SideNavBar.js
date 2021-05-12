@@ -10,7 +10,6 @@ const { Text } = Typography;
 function SideNavBar() {
   let history = useHistory();
   const user=useSelector(selectUserObj);
-  console.log('qqqqqqqqqqqqqqq', user);
 
   return (
     <div className={styles.fatherDiv}>

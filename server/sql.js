@@ -6,16 +6,15 @@ const config = {
   authentication: {
     options: {
       userName: process.env.SQL_USER,
-      password: process.env.SQL_PASSWORD
+      password: process.env.SQL_PASSWORD,
     },
-    type: "default"
+    type: "default",
   },
   server: process.env.SQL_HOST,
   options: {
     database: process.env.SQL_DB,
     encrypt: true,
     keepAlive: true,
-
   }
 };
 
@@ -54,8 +53,6 @@ exports.getUserData = (userID) => {
 
 
 function getUserReq(userID, callback) {
-  console.log('userID', userID);
-  console.log("Reading rows from the Table...");
   let results = [];
 
   const request = new Request(
@@ -96,7 +93,6 @@ exports.updateUserData = (userID, changes) => {
 
 
 function updateUserReq(userID, changes, callback) {
-  console.log('changes', changes)
   let changesString = "";
 
   if (changes["Ui_Properties"]) {
@@ -107,7 +103,7 @@ function updateUserReq(userID, changes, callback) {
     changesString = changesString + `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `;
 
   });
-  console.log('changesString', changesString)
+
   const request = new Request(
     `UPDATE [dbo].[Users3]
     SET ${changesString}

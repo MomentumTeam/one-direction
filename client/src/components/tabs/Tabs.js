@@ -8,7 +8,6 @@ import CONFIG from "../../config.json";
 export const Tabs = () => {
   let location = useLocation();
   const user = useSelector(selectUserObj);
-  console.log('CONFIG', CONFIG);
 
   // console.log('user', user);
   // console.log('user.Ui_Properties', user.Ui_Properties);
