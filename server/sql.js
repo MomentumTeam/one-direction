@@ -56,7 +56,7 @@ function getUserReq(userID, callback) {
   let results = [];
 
   const request = new Request(
-    `SELECT Users3.*, Rank.Rank, Computer_Site.Computer_Site, User_Type.User_Type, User_Profile.Profile_Name_HEB, Original_Domain.Original_Domain, requestsStatus.Biopass_Taken FROM [dbo].[Users3]
+    `SELECT Users3.*, Rank.Rank, Computer_Site.Computer_Site, User_Type.User_Type, User_Profile.Profile_Name_HEB,User_Profile.System_List, Original_Domain.Original_Domain, requestsStatus.Biopass_Taken FROM [dbo].[Users3]
     INNER JOIN [dbo].[Rank] AS Rank ON Rank.Rank_ID=Users3.Rank_ID
     INNER JOIN [dbo].[Computer_Site] AS Computer_Site ON Computer_Site.Computer_Site_ID=Users3.Computer_Site_ID
     INNER JOIN [dbo].[User_Type] AS User_Type ON User_Type.User_Type_ID=Users3.User_Type_ID

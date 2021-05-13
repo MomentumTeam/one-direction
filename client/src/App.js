@@ -28,12 +28,20 @@ function App() {
   }, []);
 
 
-  if (loading===true) {
+  if (loading === true) {
     return <div>Waiting for user from DB</div>;
   }
   else {
     dispatch(setFolders(user.Shares));
-    dispatch(setSystems(user.Application));
+    
+    if (user.Ui_Properties !== undefined) {
+      if (user.Ui_Properties.stage <= 3 && user.Application === "") { //on the Initial login- the systems List will be taken from userProfile Table
+        dispatch(setSystems(user.System_List));
+      }
+      else {
+        dispatch(setSystems(user.Application));
+      }
+    }
 
     return (
       <ConfigProvider direction="rtl">
