@@ -10,6 +10,7 @@ import { EditAvatar } from "./EditAvatar";
 import Title from "antd/lib/typography/Title";
 import { updateUserServer, setChanges, updateUserObj, updateStage ,selectUserObj } from "../user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import openAlert from "../../components/Alert";
 
 
 export const PersonalInformationForm = ({user}) => {
@@ -40,15 +41,17 @@ export const PersonalInformationForm = ({user}) => {
       if (response.payload.severity === "success") {
         dispatch(updateUserObj(values));   //update userObj in userSlice
         dispatch(updateStage(2));   //update stage in userSlice
+        openAlert("success", "הפרטים האישיים עודכנו בהצלחה!");
         history.push("/folders");  //continue to the next stage
       }
       else {
+        openAlert("error", response.payload.message);  //REPLACE
         console.log('error', response.message);
       }
     }
     catch (err) {
+      openAlert("error",  err);    //REPLACE
       console.log('err', err);
-
     }
   };
 

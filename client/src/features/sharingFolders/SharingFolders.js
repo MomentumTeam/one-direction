@@ -12,6 +12,7 @@ import { selectFolders, update, RemoveFolder } from "./SharingFoldersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Content } from "../../components/Content";
 import { updateUserServer, setChanges, updateStage } from "../user/userSlice";
+import openAlert from "../../components/Alert";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -37,13 +38,16 @@ function SharingFolders() {
       if (response.payload.severity === "success") {
         dispatch(update(joinedFoldersArray));
         dispatch(updateStage(3));
+        openAlert("success", "תיקיות השיתוף עודכנו בהצלחה!");
         history.push("/systems");
       }
       else {
+        openAlert("error", response.payload.message);  //REPLACE
         console.log('error', response.payload.message);
       }
     }
     catch (err) {
+      openAlert("error",  err);    //REPLACE
       console.log('err', err);
     }
   };

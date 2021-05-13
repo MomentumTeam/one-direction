@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectSystems, updateSystems } from "./SystemsSlice";
 import { Content } from "../../components/Content";
 import { updateUserServer, setChanges, updateStage ,selectUserObj } from "../user/userSlice";
+import openAlert from "../../components/Alert";
 
 const { Title, Paragraph, } = Typography;
 
@@ -28,13 +29,16 @@ function Systems({user}) {
             if (response.payload.severity === "success") {
                 dispatch(updateSystems(systems));
                 dispatch(updateStage(4));
+                openAlert("success", "רשימת המערכות עודכנה בהצלחה!");
                 history.push("/fingerPrint");
             }
             else {
+                openAlert("error", response.payload.message);  //REPLACE
                 console.log('error', response.payload.message);
             }
         }
         catch (err) {
+            openAlert("error",  err);    //REPLACE
             console.log('err', err);
         }
     }
