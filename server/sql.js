@@ -1,5 +1,4 @@
 require("dotenv").config({ path: "../oneDirection.env" });
-const e = require("express");
 const { Connection, Request } = require("tedious");
 
 const config = {
