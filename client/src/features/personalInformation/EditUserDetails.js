@@ -76,18 +76,24 @@ export const EditUserDetails = ({ user }) => {
             </Form.Item>
           </Col>
           <Col className="gutter-row" span={6}>
-            <Form.Item name="More_Contact_Information" label={label}
-              rules={[
-                {
-                  max: 10,
-                  min: 9,
-                  message: "מספר טלפון לא תקין, נסה שוב!",
-                }]}>
-              {typeId === 1 ?
+            {typeId === 1 ?
+              <Form.Item name="More_Contact_Information" label={label}
+                rules={[
+                  {
+                    max: 10,
+                    min: 9,
+                    message: "מספר טלפון לא תקין, נסה שוב!",
+                  }]}>
                 <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} /> :
+              </Form.Item>
+              :
+              <Form.Item name="More_Contact_Information" label={label}
+                rules={[{
+                  type: 'email', message: "כתובת מייל לא תקינה!",
+                }]}>
                 <Input size="large" defaultValue={user.More_Contact_Information} />
-              }
-            </Form.Item>
+              </Form.Item>
+            }
           </Col>
           <Col className="gutter-row" span={6}>
             <Form.Item label="פרופיל תפקידן">
