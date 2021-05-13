@@ -6,7 +6,7 @@ import CONFIG from '../../config.json';
 const { Option } = Select;
 
 export const EditUserDetails = ({ user }) => {
-  const [value, setValue] = useState(); //station-yes or no
+  const [value, setValue] = useState(user && Object.keys(user).length !== 0 ? user.Ui_Properties.Computer_Option : 0); //station-yes or no
   const [typeId, setTypeId] = useState(user && Object.keys(user).length !== 0 ? user.Ui_Properties.communicationType : 0); //communication - type
   const [label, setLabel] = useState(CONFIG.labels[typeId]); //communication -label 
 
@@ -137,12 +137,16 @@ export const EditUserDetails = ({ user }) => {
             </Form.Item>
           </Col>
           <Col className="gutter-row" span={6}>
-            <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
+            <Form.Item label="יש לי עמדה קבועה?" name="Computer_Option">
               <Radio.Group size="large" value={value} onChange={onChange}>
-                <Radio value={1}>לא</Radio>
-                <Radio value={2}>כן</Radio>
+                <Radio value={0}>לא</Radio>
+                <Radio value={1}>כן</Radio>
               </Radio.Group>
-              {value === 2 ? <Input style={{ marginTop: "5%" }} defaultValue={user.Computer_Name} /> : null}
+              {value === 1 ?
+                <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
+                  <Input style={{ marginTop: "5%" }} defaultValue={user.Computer_Name} />
+                </Form.Item>
+                : null}
             </Form.Item>
           </Col>
           <Col className="gutter-row" span={6}>

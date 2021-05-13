@@ -94,6 +94,7 @@ exports.updateUserData = (userID, changes) => {
 function updateUserReq(userID, changes, callback) {
   let changesString = "";
 
+
   if (changes["Ui_Properties"]) {
     changes["Ui_Properties"] = JSON.stringify(changes["Ui_Properties"]);
   }
@@ -102,7 +103,7 @@ function updateUserReq(userID, changes, callback) {
     changesString = changesString + `${key}='${changes[key]}' ${Object.keys(changes).length === i + 1 ? "" : ","} `;
 
   });
-
+  console.log('changesString', changesString)
   const request = new Request(
     `UPDATE [dbo].[Users3]
     SET ${changesString}

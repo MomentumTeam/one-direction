@@ -19,6 +19,7 @@ export const PersonalInformationForm = ({user}) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
+    console.log('values', values)
     try {
       Object.keys(values).forEach(key => values[key] === undefined && delete values[key]);  //remove unchanges values
 

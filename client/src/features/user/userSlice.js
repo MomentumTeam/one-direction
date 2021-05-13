@@ -37,6 +37,7 @@ export const userSlice = createSlice({
             Object.keys(action.payload).forEach((key) => {
                 if (key === "Ui_Properties") {
                     state.userObj[key].communicationType = action.payload[key].communicationType;
+                    state.userObj[key].Computer_Option = action.payload[key].Computer_Option;
                 }
                 else {
                     state.userObj[key] = action.payload[key];
@@ -50,12 +51,16 @@ export const userSlice = createSlice({
         setChanges: (state, action) => {
             let changes = action.payload;
             let changeInCommunication = false;
+            let changeInComputerOption = false;
 
             if (("communicationType" in changes)) {
                 changeInCommunication = true;
             }
+            if (("Computer_Option" in changes)) {
+                changeInComputerOption = true;
+            }
 
-            const UiPropertiesObj = { stage: changes.stage > state.userObj.Ui_Properties["stage"] ? changes.stage : state.userObj.Ui_Properties["stage"], communicationType: changeInCommunication ? changes.communicationType : state.userObj.Ui_Properties["communicationType"] };
+            const UiPropertiesObj = { stage: changes.stage > state.userObj.Ui_Properties["stage"] ? changes.stage : state.userObj.Ui_Properties["stage"], communicationType: changeInCommunication ? changes.communicationType : state.userObj.Ui_Properties["communicationType"], Computer_Option: changeInComputerOption ? changes.Computer_Option : state.userObj.Ui_Properties["Computer_Option"] };
             changes["Ui_Properties"] = UiPropertiesObj;
             delete changes.stage;
             delete changes.communicationType;
