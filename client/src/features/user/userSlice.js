@@ -64,6 +64,7 @@ export const userSlice = createSlice({
             changes["Ui_Properties"] = UiPropertiesObj;
             delete changes.stage;
             delete changes.communicationType;
+            delete changes.Computer_Option;
             state.changes = changes;
         },
     },

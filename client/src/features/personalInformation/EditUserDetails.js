@@ -6,26 +6,27 @@ import CONFIG from '../../config.json';
 const { Option } = Select;
 
 export const EditUserDetails = ({ user }) => {
-  const [value, setValue] = useState(user && Object.keys(user).length !== 0 ? user.Ui_Properties.Computer_Option : 0); //station-yes or no
+  const [Computer_Option, setComputer_Option] = useState(user && Object.keys(user).length !== 0 ? user.Ui_Properties.Computer_Option : 0); //station-yes or no
   const [typeId, setTypeId] = useState(user && Object.keys(user).length !== 0 ? user.Ui_Properties.communicationType : 0); //communication - type
   const [label, setLabel] = useState(CONFIG.labels[typeId]); //communication -label 
 
-  const onChange = e => {   //update station
-    setValue(e.target.value);
+  const onChangeStation = e => {   //update station
+    console.log('e', e.target.value)
+    setComputer_Option(e.target.value);
   };
 
-  function handleChange(value) {   //update communication: type and label
+  const handleChangeCommunicationType = (value) => {   //update communication: type and label
     setTypeId(value);
     setLabel(CONFIG.labels[value]);
   }
 
   const prefixSelector = (   //prefixSelector for phoneNumber
-    <Form.Item name="prefix" noStyle>
-      <Select noStyle>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
+    // <Form.Item name="prefix" noStyle>
+    <Select noStyle>
+      <Option value="86">+86</Option>
+      <Option value="87">+87</Option>
+    </Select>
+    // </Form.Item>
   );
 
   if (user && Object.keys(user).length !== 0) {
@@ -41,7 +42,11 @@ export const EditUserDetails = ({ user }) => {
             <Form.Item
               label="שם מלא באנגלית"
               name="username"
-              rules={[{ required: true, message: "אנא מלא שדה זה!", whitespace: true }]}
+              rules={[{                            //TODO
+                // required: true,
+                // message: "אנא מלא שדה זה!",
+                // whitespace: true
+              }]}
             >
               <Input size="large" defaultValue={user.First_Name_ENG + " " + user.Last_Name_ENG} />
             </Form.Item>
@@ -68,7 +73,7 @@ export const EditUserDetails = ({ user }) => {
           </Col>
           <Col className="gutter-row" span={6}>
             <Form.Item name="communicationType" label="אמצעי תקשורת נוסף">
-              <Select size="large" onChange={handleChange} defaultValue={user.Ui_Properties.communicationType}>
+              <Select size="large" onChange={handleChangeCommunicationType} defaultValue={user.Ui_Properties.communicationType}>
                 <Option value={0}>-----------</Option>
                 <Option value={1}>טלפון</Option>
                 <Option value={2}>מייל</Option>
@@ -84,7 +89,7 @@ export const EditUserDetails = ({ user }) => {
                     min: 9,
                     message: "מספר טלפון לא תקין, נסה שוב!",
                   }]}>
-                <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} /> :
+                <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
               </Form.Item>
               :
               <Form.Item name="More_Contact_Information" label={label}
@@ -138,16 +143,16 @@ export const EditUserDetails = ({ user }) => {
           </Col>
           <Col className="gutter-row" span={6}>
             <Form.Item label="יש לי עמדה קבועה?" name="Computer_Option">
-              <Radio.Group size="large" value={value} onChange={onChange}>
+              <Radio.Group size="large" defaultValue={Computer_Option} onChange={onChangeStation}>
                 <Radio value={0}>לא</Radio>
                 <Radio value={1}>כן</Radio>
               </Radio.Group>
-              {value === 1 ?
-                <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
-                  <Input style={{ marginTop: "5%" }} defaultValue={user.Computer_Name} />
-                </Form.Item>
-                : null}
             </Form.Item>
+            {Computer_Option === 1 ?
+              <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
+                <Input style={{ marginTop: "5%" }} defaultValue={user.Computer_Name} />
+              </Form.Item>
+              : null}
           </Col>
           <Col className="gutter-row" span={6}>
             <Form.Item label="שם מחשב">
