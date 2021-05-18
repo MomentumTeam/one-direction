@@ -8,12 +8,14 @@ const { Title } = Typography;
 
 export const EndProcess = () => {
   const [value, setValue] = useState(1);
+  const [finish, setFinish] = useState(false);
 
   const onChange = (e) => {
     setValue(e.target.value);
   };
 
-  const finish = (e) => {
+  const submit = (e) => {
+    setFinish(true);
     window.alert("סיום תהליך");
   }
 
@@ -31,20 +33,27 @@ export const EndProcess = () => {
           </Radio>
         </Radio.Group>
       </div>
-      <div className={styles.popUpDiv}>
-        <Title level={5} style={{ color: "#CFEA11" }}>
-          פרטי יוזר וסיסמה ישלחו אליך לפני המעבר
+      {finish ?
+        <div className={styles.popUpDiv}>
+
+
+          <Title level={5} style={{ color: "#CFEA11" }}>
+            פרטי יוזר וסיסמה ישלחו אליך לפני המעבר
         </Title>
-        <Title level={3} style={{ color: "white" }}>
-          !בהצלחה
+          <Title level={3} style={{ color: "white" }}>
+            !בהצלחה
         </Title>
-        <img src={process.env.PUBLIC_URL + "/img/amongs.png"} alt=""></img>
-      </div>
+
+          <img src={process.env.PUBLIC_URL + "/img/amongs.png"} alt="" />
+
+
+        </div> : null
+      }
 
       <Row justify="end" align="bottom" className={styles.tailRow}>
         <div>
           <Col>
-            <Button onClick={finish} shape="round" size="large">
+            <Button onClick={submit} shape="round" size="large">
               סיום תהליך
                             <ArrowLeftOutlined />
             </Button>
