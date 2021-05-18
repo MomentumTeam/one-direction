@@ -8,6 +8,7 @@ import CONFIG from "../../config.json";
 export const Tabs = () => {
   let location = useLocation();
   const user = useSelector(selectUserObj);
+  const stage = user && Object.keys(user).length !== 0 ? user.Ui_Properties.communicationType : 1; //communication - type;
 
   // console.log('user', user);
   // console.log('user.Ui_Properties', user.Ui_Properties);
@@ -15,7 +16,7 @@ export const Tabs = () => {
 
   let currTab;
   if (location.pathname === '/faq') {
-    currTab = CONFIG.tabs.find((tab) => tab.id === user.Ui_Properties.stage);
+    currTab = CONFIG.tabs.find((tab) => tab.id === stage);
   }
   else {
     currTab = CONFIG.tabs.find((tab) => tab.path === location.pathname);
