@@ -8,7 +8,7 @@ import CONFIG from "../../config.json";
 export const Tabs = () => {
   let location = useLocation();
   const user = useSelector(selectUserObj);
-  const stage = user && Object.keys(user).length !== 0 ? user.Ui_Properties.communicationType : 1; //communication - type;
+  const stage = user && Object.keys(user).length !== 0 ? user.Ui_Properties.stage : 1; 
 
   // console.log('user', user);
   // console.log('user.Ui_Properties', user.Ui_Properties);

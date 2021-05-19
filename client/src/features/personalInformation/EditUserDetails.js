@@ -150,7 +150,7 @@ export const EditUserDetails = ({ user }) => {
             </Form.Item>
             {Computer_Option === 1 ?
               <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
-                <Input style={{ marginTop: "5%" }} defaultValue={user.Computer_Name} />
+                <Input style={{ marginTop: "5%" }} defaultValue={user.LocalComputerName} />
               </Form.Item>
               : null}
           </Col>

@@ -17,6 +17,7 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
+    "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-shraga": "^1.4.0",
     "path": "^0.12.7",

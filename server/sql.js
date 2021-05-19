@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "../oneDirection.env" });
 const { Connection, Request } = require("tedious");
+const os=require('os');
 
 const config = {
   authentication: {
@@ -35,16 +36,19 @@ exports.getUserData = (userID) => {
       if (error) {
         reject(error);
       }
-      results[0].Ui_Properties = JSON.parse(results[0].Ui_Properties);
+      let user=results[0];
+      user.Ui_Properties = JSON.parse(user.Ui_Properties);
 
-      if (results[0].Shares === "") {   //empty string means no folders
-        results[0].Shares = [];
+      if (user.Shares === "") {   //empty string means no folders
+        user.Shares = [];
       }
       else {
-        results[0].Shares = results[0].Shares.split(',');
+        user.Shares = user.Shares.split(',');
       }
 
-      resolve(results[0]);
+      user["LocalComputerName"]=os.hostname();  //get my ComputerName
+
+      resolve(user);
     });
   });
 }
