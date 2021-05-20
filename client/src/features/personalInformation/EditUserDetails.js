@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Form, Input, Radio, Select } from "antd";
+import { ConfigProvider, Row, Col, Form, Input, Radio, Select } from "antd";
 import { UsersAutoComplete } from "../../components/usersAutocomplete/UsersAutocomplete";
 import CONFIG from '../../config.json';
 
@@ -21,12 +21,15 @@ export const EditUserDetails = ({ user }) => {
   }
 
   const prefixSelector = (   //prefixSelector for phoneNumber
-    // <Form.Item name="prefix" noStyle>
-    <Select noStyle>
-      <Option value="86">+86</Option>
-      <Option value="87">+87</Option>
-    </Select>
-    // </Form.Item>
+    <Form.Item name="prefix" noStyle>
+      <Select noStyle placeholder="קידומת" bordered={false}>
+        <Option value="050">050</Option>
+        <Option value="052">052</Option>
+        <Option value="08">08</Option>
+        <Option value="03">03</Option>
+        <Option value="077">077</Option>
+      </Select>
+    </Form.Item>
   );
 
   if (user && Object.keys(user).length !== 0) {
@@ -82,15 +85,17 @@ export const EditUserDetails = ({ user }) => {
           </Col>
           <Col className="gutter-row" span={6}>
             {typeId === 1 ?
-              <Form.Item name="More_Contact_Information" label={label}
-                rules={[
-                  {
-                    max: 10,
-                    min: 9,
-                    message: "מספר טלפון לא תקין, נסה שוב!",
-                  }]}>
-                <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
-              </Form.Item>
+              <ConfigProvider direction="ltr">
+                <Form.Item name="More_Contact_Information" label={label}
+                  rules={[
+                    {
+                      max: 9,
+                      min: 4,
+                      message: "מספר טלפון לא תקין, נסה שוב!",
+                    }]}>
+                  <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
+                </Form.Item>
+              </ConfigProvider>
               :
               <Form.Item name="More_Contact_Information" label={label}
                 rules={[{

@@ -17,6 +17,7 @@ export const AppProgress = () => {
         percent={(stage-1)*25}
         strokeLinecap="square"
         className={styles.bigProgress}
+        strokeColor='#CFEA11'
       />
     </div>
     // <Progress percent={30} />
