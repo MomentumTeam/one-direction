@@ -20,19 +20,38 @@ export const EditUserDetails = ({ user }) => {
     setLabel(CONFIG.labels[value]);
   }
 
-  const prefixSelector = (   //prefixSelector for phoneNumber
-    <Form.Item name="prefix" noStyle>
-      <Select noStyle placeholder="קידומת" bordered={false}>
-        <Option value="050">050</Option>
-        <Option value="052">052</Option>
-        <Option value="08">08</Option>
-        <Option value="03">03</Option>
-        <Option value="077">077</Option>
-      </Select>
-    </Form.Item>
-  );
-
   if (user && Object.keys(user).length !== 0) {
+
+    const prefixSelector = (   //prefixSelector for phoneNumber
+      <Form.Item name="prefix" noStyle
+        rules={[{
+          required: true,
+          message: "אנא בחר קידומת!",
+          whitespace: true
+        }]}>
+        {user.Ui_Properties.prefix === "" ?
+          <Select noStyle
+            placeholder="קידומת"
+            bordered={false}>
+            <Option value="050">050</Option>
+            <Option value="052">052</Option>
+            <Option value="08">08</Option>
+            <Option value="03">03</Option>
+            <Option value="077">077</Option>
+          </Select>
+          :
+          <Select noStyle
+            bordered={false}
+            defaultValue={user.Ui_Properties.prefix}>
+            <Option value="050">050</Option>
+            <Option value="052">052</Option>
+            <Option value="08">08</Option>
+            <Option value="03">03</Option>
+            <Option value="077">077</Option>
+          </Select>}
+      </Form.Item>
+    );
+
     return (
       <>
         <Row gutter={(16, 48)}>
@@ -86,14 +105,17 @@ export const EditUserDetails = ({ user }) => {
           <Col className="gutter-row" span={6}>
             {typeId === 1 ?
               <ConfigProvider direction="ltr">
+
                 <Form.Item name="More_Contact_Information" label={label}
+                  style={{ direction: "ltr" }}
                   rules={[
                     {
                       max: 9,
                       min: 4,
                       message: "מספר טלפון לא תקין, נסה שוב!",
                     }]}>
-                  <Input size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
+                  <Input
+                    size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
                 </Form.Item>
               </ConfigProvider>
               :
