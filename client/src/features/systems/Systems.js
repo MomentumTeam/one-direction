@@ -7,23 +7,28 @@ import SystemsList from "./SystemsList";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectSystems, updateSystems } from "./SystemsSlice";
+import { selectSystems, updateSystems, selectSystemsBackUp } from "./SystemsSlice";
 import { Content } from "../../components/Content";
-import { updateUserServer, setChanges, updateStage ,selectUserObj } from "../user/userSlice";
+import { updateUserServer, setChanges, updateStage, selectUserObj } from "../user/userSlice";
 import openAlert from "../../components/Alert";
 
 const { Title, Paragraph, } = Typography;
 
-function Systems({user}) {
+function Systems({ user }) {
     let history = useHistory();
     let dispatch = useDispatch();
     const systems = useSelector(selectSystems);
+    const systemsBackUp = useSelector(selectSystemsBackUp);
 
     const finish = async (e) => {
         try {
             const namesArray = systems.map(system => system.systemName);
             dispatch(setChanges({ Application: namesArray.toString(), stage: 4 }));
 
+            if (namesArray.includes("Lync")) {
+                console.log('includes');
+                throw Error("dsfdsfdsfds");
+            }
             const response = await dispatch(updateUserServer());
 
             if (response.payload.severity === "success") {
@@ -33,13 +38,15 @@ function Systems({user}) {
                 history.push("/fingerPrint");
             }
             else {
+                dispatch(updateSystems(systemsBackUp)); //on error - set copy (before last adding/removing)
                 openAlert("error", response.payload.message);  //REPLACE
-                console.log('error', response.payload.message);
+                console.log("error", response.payload.message);
             }
         }
         catch (err) {
-            openAlert("error",  err);    //REPLACE
-            console.log('err', err);
+            dispatch(updateSystems(systemsBackUp)); //on error - set copy (before last adding/removing)
+            openAlert("error", err);    //REPLACE
+            console.log("err", err);
         }
     }
 

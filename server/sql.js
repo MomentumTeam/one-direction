@@ -118,7 +118,7 @@ function updateUserReq(userID, changes, callback) {
         console.error("err: " + error.message);
         return callback(error, null);
       }
-      callback(null, { severity: 'success', message: "!הפרטים עודכנו בהצלחה" });
+      callback(null, { severity: 'success' });
     }
   );
 

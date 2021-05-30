@@ -7,6 +7,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import styles from "./FingerPrint.module.css";
 import { updateStage, setChanges, updateUserServer } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
+import openAlert from "../../components/Alert";
 
 
 export const FingerPrint = ({ user }) => {
@@ -17,16 +18,20 @@ export const FingerPrint = ({ user }) => {
     try {
       dispatch(setChanges({ stage: 5 })); //update changes for server updateUser function
       const response = await dispatch(updateUserServer());
+      console.log('response', response.payload)
 
       if (response.payload.severity === "success") {
         dispatch(updateStage(5));   //update stage in userSlice
+        openAlert("success", "הרכשת אצבע עברה בהצלחה!");
         history.push("/finish");
       }
       else {
-        console.log('error', response.message);
+        openAlert("error", response.payload.message);  //REPLACE
+        console.log('error', response.payload.message);
       }
     }
     catch (err) {
+      openAlert("error", err);    //REPLACE
       console.log('err', err);
     }
   };
@@ -112,7 +117,7 @@ export const FingerPrint = ({ user }) => {
         <Row justify="end" align="bottom" className={styles.tailRow}>
           <div>
             <Col>
-              <Button onClick={finish} shape="round" size="large">
+              <Button onClick={finish} shape="round" size="large" disabled={user.Biopass_Taken === true ? false : true} >
                 סיימתי הרכשת אצבע
               <ArrowLeftOutlined />
               </Button>

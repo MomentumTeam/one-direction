@@ -3,7 +3,9 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
     systems: [],
-    systemsOptions: [{ value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Lync' }, { value: 'Power Point' }, { value: 'Word' }, { value: 'Fuck You' }]
+    systemsBackUp: [],
+    allOptions: [{ value: 'OutLook' }, { value: 'Photo Shop' }, { value: 'Lync' }, { value: 'Power Point' }, { value: 'Word' }, { value: 'Fuck You' }],
+    systemsOptions: [],
 };
 
 
@@ -16,24 +18,27 @@ export const SystemsSlice = createSlice({
                 const systems = action.payload.split(',').map(function (item) {
                     return item.trim();
                 });
+
                 const systemsObj = [];
                 systems.map(name => {
                     systemsObj.push({ systemName: name });
                 });
 
                 state.systems = systemsObj; //set systems
+                state.systemsBackUp = systemsObj; //set systems to copy
 
-                let systemsOptions = current(state).systemsOptions;
-                systemsOptions = systemsOptions.filter((option) => {
-                    const existsInSystems = systems.includes(option.value);
-                    return !existsInSystems;
-                });
+                let allOptions = current(state).allOptions;
 
-                state.systemsOptions = systemsOptions;  //filter systems options
+                state.systemsOptions = filterSystemsOptions(systems, allOptions);  //filter systems options
             }
         },
         updateSystems: (state, action) => {
             state.systems = action.payload;
+            state.systemsBackUp = action.payload;
+
+            let allOptions = current(state).allOptions;
+            let systemsString = action.payload.map((systems) => systems.systemName);  
+            state.systemsOptions = filterSystemsOptions(systemsString, allOptions);  //filter systems options (here as well in case of error)
         },
         AddToExistingList: (state, action) => {
             state.systems = [...state.systems, action.payload]; //add to list
@@ -46,8 +51,17 @@ export const SystemsSlice = createSlice({
     }
 });
 
+function filterSystemsOptions(systems, allOptions) {  //functions to filter systems options
+
+    let filterdOptions = allOptions.filter((option) => {
+        const existsInSystems = systems.includes(option.value);
+        return !existsInSystems;
+    });
+    return filterdOptions;
+}
 
 export const selectSystems = (state) => state.systems.systems;
+export const selectSystemsBackUp = (state) => state.systems.systemsBackUp;
 export const selectSystemsOptions = (state) => state.systems.systemsOptions;
 
 
