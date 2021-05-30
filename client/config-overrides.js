@@ -31,8 +31,10 @@ module.exports = override(
       "@rate-star-color": "#CFEA11",
       "@rate-star-bg": "#FFFFFF",
 
+      //Progress
       "@progress-default-color": "#CFEA11",
       "@progress-info-text-color": "#FFFFFF",
+      
       //Faq
       "@collapse-content-bg": "#E3E3E3",
       "@collapse-header-bg": "#f2f2f2",

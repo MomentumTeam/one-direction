@@ -3,16 +3,20 @@
     margin-top: 3%;
 }
 
-.collapse{
+.collapseWrapper {
+    overflow-y: scroll;
+    height: 75vh;
+}
+
+.collapse {
     margin: 3%;
     border: none;
-    overflow: auto;
-
+ /* overflow: auto; */
 }
 
 .faqTitlesDiv {
-    /* display: flex;
-    flex-direction: row; */
+  /* display: flex; */
+  /* flex-direction: row; */
     margin-top: 5%;
 }
 
@@ -23,12 +27,9 @@
 
 .faqPanel {
     font-size: 120%;
-    
 }
 
 .answer {
     padding-right: 5%;
-    /* background-color: #e3e3e3; */
+  /* background-color: #e3e3e3; */
 }
-
-

@@ -20,71 +20,74 @@ function Faq() {
     return (
         <div className={styles.fatherDiv}>
             <Title level={2}>שאלות ותשובות FAQ</Title>
-
-            <Collapse  defaultActiveKey={['1']} className={styles.collapse}
-                // ghost
-                // bordered={false}
-                expandIcon={({ isActive }) =>
-                (isActive ? <img
-                    src={process.env.PUBLIC_URL + "/img/faq/down.png"}
-                    alt="close"
-                /> : <img
+            
+            <div className={styles.collapseWrapper}>
+                <Collapse defaultActiveKey={['1']} className={styles.collapse}
+                    // ghost
+                    // bordered={false}
+                    expandIcon={({ isActive }) =>
+                    (isActive ? <img
+                        src={process.env.PUBLIC_URL + "/img/faq/down.png"}
+                        alt="close"
+                    /> : <img
                         src={process.env.PUBLIC_URL + "/img/faq/left.png"}
                         alt="expand"
                     />)}
 
-            >
+                >
 
 
-                <div className={styles.faqTitlesDiv}>
-                    <img src={process.env.PUBLIC_URL + "/img/faq/mail.png"} />
-                    <Text strong={true} className={styles.faqTitles}>דוא"ל</Text>
-                </div>
+                    <div className={styles.faqTitlesDiv}>
+                        <img src={process.env.PUBLIC_URL + "/img/faq/mail.png"} />
+                        <Text strong={true} className={styles.faqTitles}>דוא"ל</Text>
+                    </div>
 
-                <Panel key="1"  header="איך אדע שלא פספסתי מיילים במעבר לרשת האחת? " className={styles.faqPanel}>
-                    {answer}
-                </Panel>
+                    <Panel key="1" header="איך אדע שלא פספסתי מיילים במעבר לרשת האחת? " className={styles.faqPanel}>
+                        {answer}
+                    </Panel>
 
-                <Panel key="2" header="כיצד ניגשים למייל ברשת האחת?" className={styles.faqPanel}>
-                    <p className={styles.answer}>
-                        בלחיצה על החץ מצד ימין התשובה נפתחת כאן.....
+                    <Panel key="2" header="כיצד ניגשים למייל ברשת האחת?" className={styles.faqPanel}>
+                        <p className={styles.answer}>
+                            בלחיצה על החץ מצד ימין התשובה נפתחת כאן.....
                     </p>
-                </Panel>
+                    </Panel>
 
 
 
-                <div className={styles.faqTitlesDiv}>
-                    <img src={process.env.PUBLIC_URL + "/img/faq/shares.png"} />
-                    <Text strong={true} className={styles.faqTitles}>תיקיות שיתוף</Text>
-                </div>
+                    <div className={styles.faqTitlesDiv}>
+                        <img src={process.env.PUBLIC_URL + "/img/faq/shares.png"} />
+                        <Text strong={true} className={styles.faqTitles}>תיקיות שיתוף</Text>
+                    </div>
 
-                <Panel key="3" header="כמה ספציפיים צריכים להיות הניתובים שאני מעביר לכם? האם תיקיית האב מספיקה?" className={styles.faqPanel}>
-                    {answer}
-                </Panel>
-
-
-
-                <div className={styles.faqTitlesDiv}>
-                    <img src={process.env.PUBLIC_URL + "/img/faq/me.png"} />
-                    <Text strong={true} className={styles.faqTitles}>פרטים אישיים</Text>
-                </div>
-
-                <Panel key="4" header="כיצד ניתן לדעת מה שם המחשב שלי?" className={styles.faqPanel}>
-                    {answer}
-                </Panel>
+                    <Panel key="3" header="כמה ספציפיים צריכים להיות הניתובים שאני מעביר לכם? האם תיקיית האב מספיקה?" className={styles.faqPanel}>
+                        {answer}
+                    </Panel>
 
 
 
-                <div className={styles.faqTitlesDiv}>
-                    <img src={process.env.PUBLIC_URL + "/img/faq/folders.png"} />
-                    <Text strong={true} className={styles.faqTitles}>תיקיות מעבר</Text>
-                </div>
+                    <div className={styles.faqTitlesDiv}>
+                        <img src={process.env.PUBLIC_URL + "/img/faq/me.png"} />
+                        <Text strong={true} className={styles.faqTitles}>פרטים אישיים</Text>
+                    </div>
 
-                <Panel key="5" header="אני בחופש בתאריך המעבר שלי, מה ניתן לעשות?" className={styles.faqPanel}>
-                    {answer}
-                </Panel>
+                    <Panel key="4" header="כיצד ניתן לדעת מה שם המחשב שלי?" className={styles.faqPanel}>
+                        בלחיצה על החץ מצד ימין התשובה נפתחת כאן.....
+                    </Panel>
 
-            </Collapse>
+
+
+                    <div className={styles.faqTitlesDiv}>
+                        <img src={process.env.PUBLIC_URL + "/img/faq/folders.png"} />
+                        <Text strong={true} className={styles.faqTitles}>תיקיות מעבר</Text>
+                    </div>
+
+                    <Panel key="5" header="אני בחופש בתאריך המעבר שלי, מה ניתן לעשות?" className={styles.faqPanel}>
+                        {answer}
+                    </Panel>
+
+                </Collapse>
+            </div>
+
         </div>
     )
 }
