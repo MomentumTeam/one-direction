@@ -23,13 +23,18 @@ export const EditUserDetails = ({ user }) => {
   if (user && Object.keys(user).length !== 0) {
 
     const prefixSelector = (   //prefixSelector for phoneNumber
-      <Form.Item name="prefix" noStyle
-        rules={[{
-          required: true,
-          message: "אנא בחר קידומת!",
-          whitespace: true
-        }]}>
-        {user.Ui_Properties.prefix === "" ?
+
+      user.Ui_Properties.prefix === ""
+
+        ?
+
+        <Form.Item name="prefix" noStyle
+          rules={[{
+            required: true,
+            message: "!אנא בחר קידומת",
+            whitespace: true
+          }]}
+        >
           <Select noStyle
             placeholder="קידומת"
             bordered={false}>
@@ -39,17 +44,26 @@ export const EditUserDetails = ({ user }) => {
             <Option value="03">03</Option>
             <Option value="077">077</Option>
           </Select>
-          :
-          <Select noStyle
-            bordered={false}
-            defaultValue={user.Ui_Properties.prefix}>
+        </Form.Item>
+
+        :
+
+        <Form.Item name="prefix" noStyle
+          rules={[{
+            required: true,
+            message: "!אנא בחר קידומת",
+            whitespace: true
+          }]}
+          initialValue={user.Ui_Properties.prefix}
+        >
+          <Select noStyle bordered={false}>
             <Option value="050">050</Option>
             <Option value="052">052</Option>
             <Option value="08">08</Option>
             <Option value="03">03</Option>
             <Option value="077">077</Option>
-          </Select>}
-      </Form.Item>
+          </Select>
+        </Form.Item>
     );
 
     return (
@@ -64,13 +78,21 @@ export const EditUserDetails = ({ user }) => {
             <Form.Item
               label="שם מלא באנגלית"
               name="username"
-              rules={[{                            //TODO
-                // required: true,
-                // message: "אנא מלא שדה זה!",
-                // whitespace: true
+              initialValue={user.First_Name_ENG + " " + user.Last_Name_ENG}
+              rules={[{
+                required: true,
+                message: "אנא מלא שדה זה!",
+              },
+              {
+                message: "הכנס שם מלא באנגלית!",
+                pattern: /^[a-zA-Z]+ [a-zA-Z]+$/,
+              },
+              {
+                max: 40,
+                message: "השם ארוך מדי! -מקסימום 40 תווים",
               }]}
             >
-              <Input size="large" defaultValue={user.First_Name_ENG + " " + user.Last_Name_ENG} />
+              <Input size="large" />
             </Form.Item>
           </Col>
           <Col className="gutter-row" span={6}>
@@ -96,7 +118,7 @@ export const EditUserDetails = ({ user }) => {
           <Col className="gutter-row" span={6}>
             <Form.Item name="communicationType" label="אמצעי תקשורת נוסף">
               <Select size="large" onChange={handleChangeCommunicationType} defaultValue={user.Ui_Properties.communicationType}>
-                <Option value={0}>-----------</Option>
+                {/* <Option value={0}>-----------</Option> */}
                 <Option value={1}>טלפון</Option>
                 <Option value={2}>מייל</Option>
               </Select>
@@ -108,22 +130,41 @@ export const EditUserDetails = ({ user }) => {
 
                 <Form.Item name="More_Contact_Information" label={label}
                   style={{ direction: "ltr" }}
+                  initialValue={user.More_Contact_Information}
                   rules={[
+                    {
+                      required: true,
+                      message: "!אנא מלא שדה זה",
+                      whitespace: true
+                    },
                     {
                       max: 9,
                       min: 4,
-                      message: "מספר טלפון לא תקין, נסה שוב!",
+                      // type:"number",
+                      message: "!מספר טלפון לא תקין, נסה שוב",
+                      whitespace: true
+                    }, ,
+                    {
+                      max: 50,
+                      message: "השם ארוך מדי! -מקסימום 50 תווים",
                     }]}>
                   <Input
-                    size="large" addonBefore={prefixSelector} defaultValue={user.More_Contact_Information} />
+                    size="large" addonBefore={prefixSelector} />
                 </Form.Item>
               </ConfigProvider>
               :
               <Form.Item name="More_Contact_Information" label={label}
-                rules={[{
-                  type: 'email', message: "כתובת מייל לא תקינה!",
-                }]}>
-                <Input size="large" defaultValue={user.More_Contact_Information} />
+                initialValue={user.More_Contact_Information}
+                rules={[
+                  {
+                    required: true,
+                    message: "!אנא מלא שדה זה",
+                    whitespace: true
+                  }, {
+                    type: 'email',
+                    message: "כתובת מייל לא תקינה!",
+                  }]}  >
+                <Input size="large" />
               </Form.Item>
             }
           </Col>
@@ -176,8 +217,19 @@ export const EditUserDetails = ({ user }) => {
               </Radio.Group>
             </Form.Item>
             {Computer_Option === 1 ?
-              <Form.Item label="יש לי עמדה קבועה?" name="Computer_Name">
-                <Input style={{ marginTop: "5%" }} defaultValue={user.LocalComputerName} />
+              <Form.Item label="שם עמדה קבועה" name="Computer_Name"
+                initialValue={user.Computer_Name}
+                rules={[
+                  {
+                    required: true,
+                    message: "אנא מלא שדה זה!",
+                    whitespace: true
+                  },
+                  {
+                    max: 20,
+                    message: "השם ארוך מדי! -מקסימום 20 תווים",
+                  }]}>
+                <Input style={{ marginTop: "5%" }} />
               </Form.Item>
               : null}
           </Col>

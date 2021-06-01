@@ -1,6 +1,6 @@
 require("dotenv").config({ path: "../oneDirection.env" });
 const { Connection, Request } = require("tedious");
-const os=require('os');
+const os = require('os');
 
 const config = {
   authentication: {
@@ -36,17 +36,22 @@ exports.getUserData = (userID) => {
       if (error) {
         reject(error);
       }
-      let user=results[0];
+
+      let user = results[0];
+      user["LocalComputerName"] = os.hostname();  //get my ComputerName (Local)
+
       user.Ui_Properties = JSON.parse(user.Ui_Properties);
 
-      if (user.Shares === "") {   //empty string means no folders
+      if (user.Ui_Properties.stage === 1) {       // in intial entery show my LocalComputerName in computerName (שם עמדה קבועה)
+        user.Computer_Name=user.LocalComputerName;
+      }
+      
+      if (user.Shares === "") {         //empty string means no folders
         user.Shares = [];
       }
       else {
         user.Shares = user.Shares.split(',');
       }
-
-      user["LocalComputerName"]=os.hostname();  //get my ComputerName
 
       resolve(user);
     });
@@ -68,6 +73,7 @@ function getUserReq(userID, callback) {
 	  INNER JOIN [dbo].[requestsStatus] AS requestsStatus ON requestsStatus.Transfer_ID=Users3.Transfer_ID
     WHERE Users3.Transfer_ID='${userID}'
     FOR JSON PATH;`,
+
     function (error) {
       if (error) {
         console.error("err: " + error.message);

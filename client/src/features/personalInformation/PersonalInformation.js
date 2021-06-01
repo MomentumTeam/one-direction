@@ -24,8 +24,8 @@ export const PersonalInformationForm = ({user}) => {
       Object.keys(values).forEach(key => values[key] === undefined && delete values[key]);  //remove unchanges values
 
       if (values.username !== undefined) {
-        values.First_Name_ENG = values.username.substr(0, values.username.indexOf(' '));  //extract first name
-        values.Last_Name_ENG = values.username.substr(values.username.indexOf(' ') + 1);  //extract last name
+        values.First_Name_ENG = values.username.substr(0, values.username.indexOf(' '));  //extract first name english
+        values.Last_Name_ENG = values.username.substr(values.username.indexOf(' ') + 1);  //extract last name english
       }
 
       delete values.username;
