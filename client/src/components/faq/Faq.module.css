@@ -1,0 +1,35 @@
+.fatherDiv {
+    margin-right: 5%;
+    margin-top: 3%;
+}
+
+.collapseWrapper {
+    overflow-y: scroll;
+    height: 75vh;
+}
+
+.collapse {
+    margin: 3%;
+    border: none;
+ /* overflow: auto; */
+}
+
+.faqTitlesDiv {
+  /* display: flex; */
+  /* flex-direction: row; */
+    margin-top: 5%;
+}
+
+.faqTitles {
+    font-size: 20px;
+    margin-right: 1%;
+}
+
+.faqPanel {
+    font-size: 120%;
+}
+
+.answer {
+    padding-right: 5%;
+  /* background-color: #e3e3e3; */
+}

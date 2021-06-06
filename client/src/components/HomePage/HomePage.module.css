@@ -1,0 +1,208 @@
+.topDiv {
+  height: 40vh;
+  /* width:100%; */
+  background-image: url(../../images/TopSky.png);
+}
+
+.appProgress {
+  position: absolute;
+  width: 60%;
+  top: 5%;
+  left: 2%;
+}
+
+.bottomDiv {
+  height: 60vh;
+  /* width: 100%; */
+  background-image: url(../../images/background.jpg);
+  background-repeat: no-repeat;
+}
+
+.logo {
+  height: auto;
+  width: 15%;
+  position: absolute;
+  top: -2%;
+  right: 42%;
+  filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+}
+
+.one {
+  /* background-color: #109788; */
+  font-size: 6vmin;
+  position: absolute;
+  /* width: 45%; */
+  width: 50vw;
+  top: 25%;
+  right: 25%;
+  /* z-index: 1; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+}
+
+.tealDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #109788;
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  width: 55vw;
+  height: 23vh;
+  border-top-left-radius: 100%800px;
+  border-bottom-left-radius: 100%800px;
+}
+
+.paragraph {
+  /* background-color: ; */
+  margin-right: 5%;
+  margin-top: 2%;
+  font-size: 3.5vmin;
+  color: gr;
+}
+
+.text {
+  font-size: 1.9vmin;
+  color: white;
+}
+
+.status {
+  position: relative;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-30%);
+}
+
+.statusTitle {
+  color: white;
+  position: relative;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-30%);
+}
+
+.avatar {
+  border: 2px solid #f2f2f2;
+  margin-right: 15%;
+  position: relative;
+  top: 35%;
+  transform: translateY(-30%);
+}
+
+
+.blackDiv {
+  display: flex;
+  padding-left: 40px;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  background-color: #001322;
+  position: absolute;
+  right: 20%;
+  top: 69%;
+  width: 50vw;
+  /* height: 80px; */
+  height: 9vh;
+  border-top-left-radius: 100%800px;
+  border-bottom-left-radius: 100%800px;
+  border-top-right-radius: 100%800px;
+  border-bottom-right-radius: 100%800px;
+}
+
+.selectedTab {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  background-color: #001322;
+  position: absolute;
+  right: 20%;
+  top: 70%;
+  width: 900px;
+  height: 80px;
+  border-top-left-radius: 100%800px;
+  border-bottom-left-radius: 100%800px;
+  border-top-right-radius: 100%800px;
+  border-bottom-right-radius: 100%800px;
+}
+
+.tab {
+  /* background-color: white; */
+  position: relative;
+  left:0%;
+  border: none;
+  color: white;
+  padding: 20px 15px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 100% 100% 0% 0%;  /*rounded */
+  margin: 10px 20px 0px 0px;  
+}
+
+.sideNavBarButtonsDiv {
+  /* 
+  position: fixed;
+  border: 1px solid blue;
+  background-color: rgba(255,200,200,0.5);  
+  width: 300px;
+  height: 100px;
+  bottom: 0;
+
+  right: 0;   */
+
+  /* left: 0; */
+}
+
+.button {
+  margin-top: 400px;
+  margin-left: 150px;
+}
+
+/* @media screen and (max-width: 900px) {
+  body {
+    background-color: olive;
+    color: white;
+  }
+  .tealDiv {
+    width: 500px;
+    height: 150px;
+  }
+  .blackDiv {
+    width: 200px;
+    height: 500px;
+    flex-direction: column;
+
+    padding-left: 40px;
+    right: 20%;
+    top: 69%;
+    border-top-left-radius: 100%800px;
+    border-bottom-left-radius: 100%800px;
+    border-top-right-radius: 100%800px;
+    border-bottom-right-radius: 100%800px;
+
+  }
+} */
+
+
+@media screen and (max-width: 900px) {
+  /* .paragraph {
+    display: none;
+  } */
+  .blackDiv {
+    /* display: none; */
+    width: 200px;
+    height: 100px;
+  }
+  .topDiv{
+    display: block;
+  }
+  .topDiv {
+    background-color: red;
+  }
+  .bottomDiv {
+    background-color: yellow;
+  }
+}
