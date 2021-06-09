@@ -1,31 +1,121 @@
-.fatherDiv{
-    width: 100%;
-    padding: 2%;
-    direction: rtl;
+.fatherDiv {
+  width: 100%;
+  padding: 2%;
+  direction: rtl;
 }
 
-.radioStyle{
-    display: block;
-    height: 50px;
-    line-height: 50px;
+.radioStyle {
+  display: block;
+  height: 50px;
+  line-height: 50px;
 }
 
-.popUpDiv{
-    margin-top: 10%;
-    width: 30%;
-    margin: auto;
-    /* height: 50%; */
-    padding: 3%;
-    border-radius: 25px;
-    background-image: url(../../images/TopSky.png);
-    /* background-color: #001322; */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.popUpDiv {
+  margin-top: 10%;
+  width: 30%;
+  height: 300px;
+  margin: auto;
+  /* height: 50%; */
+  padding: 3%;
+  border-radius: 25px;
+  background-image: url(../../images/TopSky.png);
+  /* background-color: #001322; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.tailRow{
-    height: 40%;
+.amongUs {
+  position: relative;
+  animation-name: amongUsAnimation;
+  /* animation-delay: 5s; */
+  animation-duration: 2s;
+  /* animation-direction: reverse; */
+  /* -webkit-animation: example 2.5s linear; */
 }
+
+
+@keyframes amongUsAnimation {
+  from {
+    top: -650px;
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    top: 0px;
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.tailRow {
+  height: 40%;
+}
+
+
+
+
+
+
+/* .barberContainer {
+  width: 84px;
+  height: 306px;
+  position: absolute;
+  top: 0%;
+  left: 35%;
+}  */
+ 
+/* .barber {
+  height: 295px;
+  width: 70px;
+  position: inherit;
+  background: #cfea11;
+  background-color: -webkit-linear-gradient(
+    -45deg,
+    transparent 25%,
+    #cfea11 25%,
+    #cfea11 50%,
+    transparent 50%,
+    transparent 75%,
+    #cfea11 75%
+  );
+  background: -moz-linear-gradient(
+    -45deg,
+    transparent 25%,
+    #cfea11 25%,
+    #cfea11 50%,
+    transparent 50%,
+    transparent 75%,
+    #cfea11 75%
+  );
+  background: -o-linear-gradient(
+    -45deg,
+    transparent 25%,
+    #cfea11 25%,
+    #cfea11 50%,
+    transparent 50%,
+    transparent 75%,
+    #cfea11 75%
+  );
+  background: linear-gradient(
+    -45deg,
+    transparent 25%,
+    #cfea11 25%,
+    #cfea11 50%,
+    transparent 50%,
+    transparent 75%,
+    #cfea11 75%
+  );
+  background-size: 35px 35px;
+  -webkit-animation: barberpole 1.5s infinite linear;
+  animation: barberpole 1.5s infinite linear;
+}
+
+@keyframes barberpole {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 100%;
+  }
+}  */

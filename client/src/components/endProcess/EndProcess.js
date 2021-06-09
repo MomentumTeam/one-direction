@@ -16,7 +16,7 @@ export const EndProcess = ({ user }) => {
 
   const submit = (e) => {
     setFinish(true);
-    window.alert("סיום תהליך");
+    // window.alert("סיום תהליך");
   }
 
   return (
@@ -24,7 +24,7 @@ export const EndProcess = ({ user }) => {
       <div className={styles.fatherDiv}>
         <Title level={3}> אישור מעבר</Title>
 
-        <Radio.Group size="100" onChange={onChange} value={value}>
+        <Radio.Group size="100" onChange={onChange} value={value} disabled={finish}>
           <Radio value={1} className={styles.radioStyle}>
             אישור מעבר לרשת האחת ב-
             <strong>
@@ -36,18 +36,22 @@ export const EndProcess = ({ user }) => {
           </Radio>
         </Radio.Group>
       </div>
+
       {finish ?
         <div className={styles.popUpDiv}>
-
+          
+          <div className={styles.barberContainer}>
+            <div className={styles.barber}></div>
+          </div>
 
           <Title level={5} style={{ color: "#CFEA11" }}>
             פרטי יוזר וסיסמה ישלחו אליך לפני המעבר
         </Title>
           <Title level={3} style={{ color: "white" }}>
-            !בהצלחה
+            בהצלחה!
         </Title>
 
-          <img src={process.env.PUBLIC_URL + "/img/amongs.png"} alt="" />
+          <img src={process.env.PUBLIC_URL + "/img/amongs.png"} className={styles.amongUs} alt="" />
 
 
         </div> : null
