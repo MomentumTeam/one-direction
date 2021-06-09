@@ -40,9 +40,9 @@ export const EndProcess = ({ user }) => {
       {finish ?
         <div className={styles.popUpDiv}>
           
-          <div className={styles.barberContainer}>
+          {/* <div className={styles.barberContainer} >
             <div className={styles.barber}></div>
-          </div>
+          </div> */}
 
           <Title level={5} style={{ color: "#CFEA11" }}>
             פרטי יוזר וסיסמה ישלחו אליך לפני המעבר
