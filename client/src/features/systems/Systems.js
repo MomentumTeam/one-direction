@@ -25,10 +25,6 @@ function Systems({ user }) {
             const namesArray = systems.map(system => system.systemName);
             dispatch(setChanges({ Application: namesArray.toString(), stage: 4 }));
 
-            if (namesArray.includes("Lync")) {
-                console.log('includes');
-                throw Error("dsfdsfdsfds");
-            }
             const response = await dispatch(updateUserServer());
 
             if (response.payload.severity === "success") {

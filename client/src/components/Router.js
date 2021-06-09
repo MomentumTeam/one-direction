@@ -22,7 +22,7 @@ export const AppRouter = () => {
         <Route exact path="/folders" render={() => <SharingFolders />} />
         <Route exact path="/systems" render={() => <Systems user={user} />} />
         <Route exact path="/fingerPrint" render={() => <FingerPrint user={user} />} />
-        <Route exact path="/finish" render={() => <EndProcess />} />
+        <Route exact path="/finish" render={() => <EndProcess user={user} />} />
         <Route exact path="/faq" render={() => <Faq />} />
         <Redirect exact to="/" />
       </Switch>

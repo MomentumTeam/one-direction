@@ -143,10 +143,6 @@ export const EditUserDetails = ({ user }) => {
                       // type:"number",
                       message: "!מספר טלפון לא תקין, נסה שוב",
                       whitespace: true
-                    }, ,
-                    {
-                      max: 50,
-                      message: "השם ארוך מדי! -מקסימום 50 תווים",
                     }]}>
                   <Input
                     size="large" addonBefore={prefixSelector} />
@@ -163,6 +159,10 @@ export const EditUserDetails = ({ user }) => {
                   }, {
                     type: 'email',
                     message: "כתובת מייל לא תקינה!",
+                  }, ,
+                  {
+                    max: 50,
+                    message: "השם ארוך מדי! -מקסימום 50 תווים",
                   }]}  >
                 <Input size="large" />
               </Form.Item>

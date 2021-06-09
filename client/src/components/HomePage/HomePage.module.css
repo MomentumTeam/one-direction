@@ -1,6 +1,7 @@
 .topDiv {
   height: 40vh;
   /* width:100%; */
+  /* background-color: lavender; */
   background-image: url(../../images/TopSky.png);
 }
 
@@ -14,13 +15,14 @@
 .bottomDiv {
   height: 60vh;
   /* width: 100%; */
+  /* background-color: pink; */
   background-image: url(../../images/background.jpg);
   background-repeat: no-repeat;
 }
 
 .logo {
   height: auto;
-  width: 15%;
+  width: 20vh;
   position: absolute;
   top: -2%;
   right: 42%;
@@ -32,9 +34,9 @@
   font-size: 6vmin;
   position: absolute;
   /* width: 45%; */
-  width: 50vw;
+  width: 60vw;
   top: 25%;
-  right: 25%;
+  right: 12%;
   /* z-index: 1; */
   display: flex;
   flex-direction: row;
@@ -91,7 +93,6 @@
   transform: translateY(-30%);
 }
 
-
 .blackDiv {
   display: flex;
   padding-left: 40px;
@@ -101,9 +102,9 @@
   position: absolute;
   right: 20%;
   top: 69%;
-  width: 50vw;
+  width: 55vw;
   /* height: 80px; */
-  height: 9vh;
+  height: 6em;
   border-top-left-radius: 100%800px;
   border-bottom-left-radius: 100%800px;
   border-top-right-radius: 100%800px;
@@ -129,7 +130,7 @@
 .tab {
   /* background-color: white; */
   position: relative;
-  left:0%;
+  left: 0%;
   border: none;
   color: white;
   padding: 20px 15px;
@@ -138,8 +139,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 100% 100% 0% 0%;  /*rounded */
-  margin: 10px 20px 0px 0px;  
+  border-radius: 100% 100% 0% 0%; /*rounded */
+  margin: 10px 20px 0px 0px;
 }
 
 .sideNavBarButtonsDiv {
@@ -186,23 +187,51 @@
   }
 } */
 
-
 @media screen and (max-width: 900px) {
   /* .paragraph {
     display: none;
   } */
   .blackDiv {
-    /* display: none; */
-    width: 200px;
-    height: 100px;
+    display: none;
+    /* width: 200px;
+    height: 100px; */
   }
-  .topDiv{
-    display: block;
+  .text {
+    display: none;
   }
   .topDiv {
     background-color: red;
+    display: block;
   }
   .bottomDiv {
-    background-color: yellow;
+    background-color: purple;
+  }
+  .one {
+    /* background-color: #109788; */
+    font-size: 2em;
+    
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* .paragraph {
+    display: none;
+  } */
+  .blackDiv {
+    display: none;
+    /* width: 200px;
+    height: 100px; */
+  }
+  .text {
+    display: none;
+  }
+  .topDiv {
+    display: block;
+    height: 150px;
+    background-color: green;
+  }
+  .bottomDiv {
+    height: calc(100%-150px);
+    background-color: aquamarine;
   }
 }

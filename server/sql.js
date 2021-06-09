@@ -1,6 +1,7 @@
 require("dotenv").config({ path: "../oneDirection.env" });
 const { Connection, Request } = require("tedious");
 const os = require('os');
+const moment = require('moment');
 
 const config = {
   authentication: {
@@ -38,14 +39,16 @@ exports.getUserData = (userID) => {
       }
 
       let user = results[0];
-      user["LocalComputerName"] = os.hostname();  //get my ComputerName (Local)
+      user["LocalComputerName"] = os.hostname();      //get my ComputerName (Local)
 
       user.Ui_Properties = JSON.parse(user.Ui_Properties);
 
+      user.Transfer_Date = moment(user.Transfer_Date).format('L');      //   convert to dd/mm/yyyy format
+
       if (user.Ui_Properties.stage === 1) {       // in intial entery show my LocalComputerName in computerName (שם עמדה קבועה)
-        user.Computer_Name=user.LocalComputerName;
+        user.Computer_Name = user.LocalComputerName;
       }
-      
+
       if (user.Shares === "") {         //empty string means no folders
         user.Shares = [];
       }

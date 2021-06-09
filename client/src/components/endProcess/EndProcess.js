@@ -6,7 +6,7 @@ import styles from "./EndProcess.module.css";
 
 const { Title } = Typography;
 
-export const EndProcess = () => {
+export const EndProcess = ({ user }) => {
   const [value, setValue] = useState(1);
   const [finish, setFinish] = useState(false);
 
@@ -26,7 +26,10 @@ export const EndProcess = () => {
 
         <Radio.Group size="100" onChange={onChange} value={value}>
           <Radio value={1} className={styles.radioStyle}>
-            אישור מעבר לרשת האחת ב-<strong>19.03.2021</strong>
+            אישור מעבר לרשת האחת ב-
+            <strong>
+              {user.Transfer_Date}
+            </strong>
           </Radio>
           <Radio value={2} className={styles.radioStyle}>
             יש לי בעיה עם תאריך המעבר. אצור קשר עם גורם מתפעל

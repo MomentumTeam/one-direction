@@ -15,13 +15,13 @@ const { Title, Paragraph, Text } = Typography;
 
 
 function HomePage() {
-    let status=1;  //default
+    let status = 1;        //default
     let history = useHistory();
     const user = useSelector(selectUserObj);
 
     if (user.Ui_Properties !== undefined) {
-        status = CONFIG.stage[user.Ui_Properties.stage-1];
-        console.log('user.Ui_Properties.stage-1', user.Ui_Properties.stage-1)
+        status = CONFIG.stage[user.Ui_Properties.stage - 1];
+        console.log('user.Ui_Properties.stage-1', user.Ui_Properties.stage - 1)
         console.log('status', status)
     }
 
@@ -84,7 +84,7 @@ function HomePage() {
                 </div>
 
                 <div className={styles.blackDiv}>
-                    <Title level={3} className={styles.status} style={{ color: "white", }}>הסטטוס שלי בתהליך </Title>
+                    <Title level={3} className={styles.statusTitle} style={{ color: "white", }}>הסטטוס שלי בתהליך </Title>
 
                     {/* <div> */}
                     {CONFIG.tabs.map((tab) => (
@@ -101,20 +101,6 @@ function HomePage() {
                 </div>
 
                 <div>
-
-                    <div className={styles.sideNavBarButtonsDiv}>
-                        <Tooltip
-                            title={
-                                <p>
-                                    יש לי <br /> שאלה
-            </p>
-                            }
-                        >
-                            <Button shape="circle" href="/faq" >
-                                <img src={process.env.PUBLIC_URL + "/img/ask.png"} alt="FAQ" />
-                            </Button>
-                        </Tooltip>
-                    </div>
 
                     <Button htmlType="submit" shape="round" size="large"
                         onClick={() => {
